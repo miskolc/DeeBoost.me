@@ -1,0 +1,2 @@
+module GuestPagesHelper
+end

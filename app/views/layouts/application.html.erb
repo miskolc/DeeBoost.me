@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Deeboost</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <%= render partial: '/layouts/partials/head'%>
 </head>
-<body>
+<body class="landing">
 
 <%= yield %>
+
+<%= render partial: '/layouts/partials/landing_js_footer' %>
 
 </body>
 </html>

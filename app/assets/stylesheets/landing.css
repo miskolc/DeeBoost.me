@@ -1,0 +1,36 @@
+.landing .navigation {
+  display: inline-block;
+  height: 50px;
+  background-color: rgba(50, 50, 50, 0.3);
+  background-image: none;
+  color: #000000 !important;
+}
+
+.landing .navbar-brand {
+  padding-top: 6px;
+  padding-bottom: 0px;
+}
+
+.landing .navbar-brand h1{
+  font-size: 37px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: rgba(255, 213, 122, 1);
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(50, 50, 50, 0.6);
+}
+
+@media (max-width: 768px) {
+  .landing .navbar-collapse.collapse {
+    background-color: rgba(50, 50, 50, 0.3);
+  }
+}
+
+.landing .container.content {
+  position: relative;
+  top: 130px;
+}

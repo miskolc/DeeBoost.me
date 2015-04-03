@@ -1,0 +1,32 @@
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    
+    <script src="/assets/TimeCircles.js"></script>
+    <script src="/assets/jquery.ajaxchimp.min.js"></script>
+    <script src="/assets/script.js"></script>
+    <script src="/assets/jquery.placeholder.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        // Invoke the plugin
+        $('input, textarea').placeholder();
+      });
+    </script>
+    <script>
+      $("#count-down").TimeCircles(
+       {   
+           circle_bg_color: "#8a7f71",
+           use_background: true,
+           bg_width: 1.0,
+           fg_width: 0.02,
+           time: {
+                Days: { color: "#fefeee" },
+                Hours: { color: "#fefeee" },
+                Minutes: { color: "#fefeee" },
+                Seconds: { color: "#fefeee" }
+            }
+       }
+    );
+
+    </script>
