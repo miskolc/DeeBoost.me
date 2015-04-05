@@ -8,11 +8,19 @@
     display: inline-block;
   }
 
-  a {
-    color: #0AB8CC;
+  .btn.btn-sand {
+    font-size: 16px;
   }
 
-  a:hover {
-    color: #0CE6FF;
+  .links {
+    margin-top:15px;
+
+    a {
+      color: #0AB8CC;
+    }
+
+    a:hover {
+      color: #0CE6FF;
+    }
   }
 }
