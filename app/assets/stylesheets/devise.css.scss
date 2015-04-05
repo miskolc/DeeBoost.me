@@ -1,0 +1,18 @@
+.authorization-form {
+  background-color: rgba(50,50,50,0.5);
+  border-radius: 8px;
+  padding: 30px 30px;
+  color: #feff96;
+  
+  .form-control {
+    display: inline-block;
+  }
+
+  a {
+    color: #0AB8CC;
+  }
+
+  a:hover {
+    color: #0CE6FF;
+  }
+}

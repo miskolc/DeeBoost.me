@@ -9,8 +9,10 @@
 
 <div class="bg">
   <div class="bg-color">
-    <%= render partial: 'layouts/partials/flash' %>
-    <%= yield %>
+    <div class="container content">
+      <%= render partial: 'layouts/partials/flash' %>
+      <%= yield %>
+    </div>
   </div>  
 </div>  
 

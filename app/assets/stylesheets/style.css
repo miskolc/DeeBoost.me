@@ -391,3 +391,18 @@ nav {
 nav section {
 	margin-top: 15%;
 }
+
+.btn-sand {
+  color: #232323;
+  background: #ffd57a;
+  border-color: #ffd57a;
+  font-weight: bold;
+}
+.btn-sand:hover {
+  background:#F7B72D;
+  border-color:#F7B72D; 
+}
+.btn-sand:focus {
+  border-color:#F7B72D;
+  outline: none;
+}
