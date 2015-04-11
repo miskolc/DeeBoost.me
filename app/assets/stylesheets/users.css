@@ -12,6 +12,6 @@
  *
  *= require_tree ./application/core
  *= require_tree ./application/addon
- *= require_tree ./guests_pages
+ *= require_tree ./users_pages
  *= require_self
  */

@@ -1,4 +1,4 @@
-.landing .navigation {
+.navigation {
   display: inline-block;
   height: 50px;
   background-color: rgba(50, 50, 50, 0.3);
@@ -6,12 +6,12 @@
   color: #000000 !important;
 }
 
-.landing .navbar-brand {
+.navbar-brand {
   padding-top: 6px;
   padding-bottom: 0px;
 }
 
-.landing .navbar-brand h1{
+.navbar-brand h1{
   font-size: 37px;
 }
 
@@ -25,12 +25,7 @@
 }
 
 @media (max-width: 768px) {
-  .landing .navbar-collapse.collapse {
+  .navbar-collapse.collapse {
     background-color: rgba(50, 50, 50, 0.3);
   }
-}
-
-.landing .container.content {
-  position: relative;
-  top: 130px;
 }
