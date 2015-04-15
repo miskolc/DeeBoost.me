@@ -253,13 +253,13 @@ a:active {color: #416467;}
 .content .alert-success {
 
 	background-color: transparent;
-	color: #ffffff;
-	display: none;
+	/*color: #ffffff;
+	display: none;*/
 }
 .content .alert-warning {
 	background-color: transparent;
-	color: #ffffff;
-	display: none;
+	/*color: #ffffff;
+	display: none;*/
 } 
  
 .followus {
