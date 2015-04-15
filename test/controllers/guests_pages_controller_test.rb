@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GuestPagesControllerTest < ActionController::TestCase
+class GuestsPagesControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end
