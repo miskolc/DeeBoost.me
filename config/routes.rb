@@ -2,14 +2,8 @@ Rails.application.routes.draw do
 
   
   namespace :api do
-  namespace :v1 do
-    get 'locations/create'
-    end
-  end
-
-  namespace :api do
-  namespace :v1 do
-    get 'locations/show'
+    namespace :v1 do
+      resources :locations, only: [:show, :create]
     end
   end
 
