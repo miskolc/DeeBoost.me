@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
 
   
+  namespace :api do
+  namespace :v1 do
+    get 'locations/create'
+    end
+  end
+
+  namespace :api do
+  namespace :v1 do
+    get 'locations/show'
+    end
+  end
+
   devise_for :users
   resources :users, only: [:show]
   # The priority is based upon order of creation: first created -> highest priority.
