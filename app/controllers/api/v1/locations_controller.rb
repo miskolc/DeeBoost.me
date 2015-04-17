@@ -2,6 +2,8 @@ class Api::V1::LocationsController < ApplicationController
   before_action :authenticate_user!
 
   def create
+    @location = current_user.locations.build location_params
+    @location.save
   end
 
   def show
@@ -10,4 +12,10 @@ class Api::V1::LocationsController < ApplicationController
       format.json {render json: @location }
     end
   end
+
+  private
+
+    def location_params
+      params.require(:location).permit(:longitude, :latitude)
+    end
 end
