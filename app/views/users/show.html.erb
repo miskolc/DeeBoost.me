@@ -1,7 +1,19 @@
-<%= form_for( @location, url: api_v1_locations_path ) do |f| %>
-  <%= f.hidden_field :user_id %>
-  <%= f.hidden_field :longitude %>
-  <%= f.hidden_field :latitude %>
-  <% f.submit %>
+
+<% if @current_location %>
+  <p><%= @current_location.longitude %></p>
+  <p><%= @current_location.latitude %></p>
+  <%= form_for( @location, url: api_v1_locations_path ) do |f| %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :longitude %>
+    <%= f.hidden_field :latitude %>
+    <%= f.submit "Update Location", class: "btn btn-default btn-sand" %>
+  <% end %>
+<% else %>
+  <%= form_for( @location, url: api_v1_locations_path ) do |f| %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :longitude %>
+    <%= f.hidden_field :latitude %>
+    <%= f.submit %>
+  <% end %>
 <% end %>
 <p><%= current_user.email %></p>
