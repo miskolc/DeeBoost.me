@@ -1,10 +1,14 @@
 var LocationGetter = (function() {
-  var locationJSON;
+  var locationJSON,
+      $form = $("#new_location");
 
   var _saveLocation = function(position) {
     var locationString = '{"latitude": "' + position.coords.latitude + 
     '", "longitude": "' + position.coords.longitude + '"}';
     locationJSON = $.parseJSON(locationString);
+    $form.find("#location_longitude").val(locationJSON.longitude);
+    $form.find("input#location_latitude").val(locationJSON.latitude);
+    $form.submit();
   }
 
   var _getLocation = function(callback) {
@@ -16,7 +20,7 @@ var LocationGetter = (function() {
   }
 
   var init = function () {
-    _getLocation(_saveLocation)
+    _getLocation(_saveLocation);
   }
 
   var location = function () {
