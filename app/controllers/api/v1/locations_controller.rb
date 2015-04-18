@@ -1,9 +1,11 @@
 class Api::V1::LocationsController < ApplicationController
   before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token, :only => :create
 
   def create
     @location = current_user.locations.build location_params
     @location.save
+    redirect_to current_user
   end
 
   def show

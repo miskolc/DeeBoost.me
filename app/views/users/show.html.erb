@@ -3,7 +3,7 @@
 <div class="container has-location">
   <p><%= @current_location.longitude %></p>
   <p><%= @current_location.latitude %></p>
-  <%= form_for( @location, url: api_v1_locations_path ) do |f| %>
+  <%= form_for( @location, url: api_v1_locations_path, remote: true ) do |f| %>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :longitude %>
     <%= f.hidden_field :latitude %>
@@ -12,7 +12,7 @@
 </div>  
 <% else %>
 <div class="container no-location">
-  <%= form_for( @location, url: api_v1_locations_path ) do |f| %>
+  <%= form_for( @location, url: api_v1_locations_path, remote: true ) do |f| %>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :longitude %>
     <%= f.hidden_field :latitude %>
