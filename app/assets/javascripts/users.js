@@ -7,11 +7,13 @@
 
 $(document).on('ready page:change', function () {
   (function(){
-    var $noLocation = $(".no-location");
+    var $noLocation = $(".no-location")
+        $form = $("#new_location");
 
     if($noLocation.length === 1) {
       console.log("No Location");
-      LocationGetter.init();
+      console.log($form);
+      LocationGetter.init($form);
     } else {
       console.log("Has Location");
     }
