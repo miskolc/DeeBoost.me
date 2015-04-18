@@ -1,13 +1,14 @@
 var LocationGetter = (function() {
+  var locationJSON;
 
-  this.saveLocation = function(location) {
+  var _saveLocation = function(location) {
     locationString = '{"latitude": "' + location.coords.latitude + 
     '", "longitude": "' + location.coords.longitude + '"}';
     locationJSON = $.parseJSON(locationString);
-    console.log(locationJSON);
+    //console.log(locationJSON);
   }
 
-  this.getLocation = function(callback) {
+  var _getLocation = function(callback) {
     if(navigator) {
       if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(callback);
@@ -15,5 +16,16 @@ var LocationGetter = (function() {
     }
   }
 
-  return this;
+  var init = function () {
+    _getLocation(_saveLocation)
+  }
+
+  var location = function () {
+    return locationJSON;
+  }
+
+  return {
+    init: init,
+    location: location
+  };
 }());
