@@ -16,6 +16,10 @@ $(document).on('ready page:change', function () {
       LocationGetter.init($form);
     } else {
       console.log("Has Location");
+      $form.find(".js-submit").on('click', function() {
+        $(this).attr("disabled", true);
+        LocationGetter.init($form);
+      });
     }
   })();
 });
