@@ -1,11 +1,10 @@
 var LocationGetter = (function() {
   var locationJSON;
 
-  var _saveLocation = function(location) {
-    locationString = '{"latitude": "' + location.coords.latitude + 
-    '", "longitude": "' + location.coords.longitude + '"}';
+  var _saveLocation = function(position) {
+    var locationString = '{"latitude": "' + position.coords.latitude + 
+    '", "longitude": "' + position.coords.longitude + '"}';
     locationJSON = $.parseJSON(locationString);
-    //console.log(locationJSON);
   }
 
   var _getLocation = function(callback) {
