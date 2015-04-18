@@ -9,9 +9,11 @@ var LocationGetter = (function() {
 
   this.getLocation = function(callback) {
     if(navigator) {
-      if(navigator.getlocation) {
-        navigator.getlocation.getCurrentPosition(callback);
+      if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(callback);
       }
     }
   }
+
+  return this;
 }());
