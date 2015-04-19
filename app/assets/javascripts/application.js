@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+// Require vendor javascripts
+//= require index.js
 //= require_tree ./application/core
 //= require_tree ./application/addons
 //= require_tree ./guests_pages
