@@ -8,6 +8,7 @@ var LocationGetter = (function() {
     locationJSON = $.parseJSON(locationString);
     $form.find("#location_longitude").val(locationJSON.longitude);
     $form.find("input#location_latitude").val(locationJSON.latitude);
+
     $form.find(".js-submit").click();
   }
 
