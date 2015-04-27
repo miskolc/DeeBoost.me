@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :api do
-    namespace :v1 do
-      resources :locations, only: [:show, :create]
-    end
-  end
-
   devise_for :users
   resources :users, only: [:show] do
     resources :locations, only: [:show, :create]
