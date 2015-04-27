@@ -3,7 +3,6 @@
 //= require turbolinks
 // Require vendor javascripts
 //= require index.js
-//= require_tree ./application/core
 //= require_tree ./application/addons
 //= require_tree ./users_pages
 

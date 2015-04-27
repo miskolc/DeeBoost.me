@@ -13,7 +13,6 @@
  * Require all vendor stylesheets
  *= require index.css
  *
- *= require_tree ./application/core
  *= require_tree ./application/addon
  *= require_tree ./guests_pages
  *= require_self
