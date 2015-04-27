@@ -13,8 +13,10 @@ class UsersController < ApplicationController
     def authorize_resource!      
       if !params[:id]
         redirect_to user_path current_user
+        flash[:alert] = "You are not allowed to access another user's data!"
       elsif current_user.id != params[:id].to_i
         redirect_to user_path current_user
+        flash[:alert] = "You are not allowed to access another user's data!"
       end    
     end
 end
