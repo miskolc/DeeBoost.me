@@ -1,14 +1,9 @@
 Rails.application.routes.draw do
 
-  
-  namespace :api do
-    namespace :v1 do
-      resources :locations, only: [:show, :create]
-    end
-  end
-
   devise_for :users
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :locations, only: [:show, :create]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -48,7 +43,7 @@ Rails.application.routes.draw do
   #     resources :sales do
   #       get 'recent', on: :collection
   #     end
-  #   end
+  #   end*
 
   # Example resource route with concerns:
   #   concern :toggleable do
