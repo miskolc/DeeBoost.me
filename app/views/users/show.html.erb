@@ -9,7 +9,10 @@
     <%= f.hidden_field :latitude %>
     <%= f.submit "Update Location", class: "btn btn-default btn-sand js-submit" %>
   <% end %>
-</div>  
+</div>
+<div class="container col-md-12 col-lg-12 col-xs-12" style="height: 240px">
+  <div id="chart_div" style="height: 100%"><div>
+</div>
 <% else %>
 <div class="container no-location">
   <%= form_for( @location, url: user_locations_path(current_user), remote: true ) do |f| %>
