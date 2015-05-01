@@ -73,6 +73,7 @@ function drawAxisTickColors() {
           }
         },
         isStacked: true,
+        legend: { position: 'top', maxLines: 20 },
         bar: { groupWidth: '90%' }
       };
 
