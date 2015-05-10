@@ -29,6 +29,9 @@ gem 'pg', '~> 0.18.1'
 # Devise
 gem 'devise', '~> 3.4.1'
 
+# Sidekiq
+gem 'sidekiq', '~> 3.3.4'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
