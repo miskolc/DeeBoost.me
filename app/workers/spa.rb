@@ -111,6 +111,5 @@ module SpaLibrary
     end
   end
 end
-puts "Loaded"
 
 #SpaLibrary.calculate 2015, 4, 9, 3, 44.852, 24.937, 300
