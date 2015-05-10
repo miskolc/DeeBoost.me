@@ -32,6 +32,9 @@ gem 'devise', '~> 3.4.1'
 # Sidekiq
 gem 'sidekiq', '~> 3.3.4'
 
+# FFI
+gem 'ffi', '~> 1.9.8'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
