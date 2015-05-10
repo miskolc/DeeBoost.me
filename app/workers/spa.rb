@@ -2,7 +2,7 @@ require 'ffi'
 
 module SpaLibrary
   extend FFI::Library
-  ffi_lib "./spa.so"
+  ffi_lib File.join(File.expand_path(File.join(File.dirname(__FILE__))), 'spa.so')
 
   class SpaObject < FFI::Struct
     layout :year          , :int,
@@ -111,6 +111,6 @@ module SpaLibrary
     end
   end
 end
+puts "Loaded"
 
-
-SpaLibrary.calculate 2015, 4, 9, 3, 44.852, 24.937, 300
+#SpaLibrary.calculate 2015, 4, 9, 3, 44.852, 24.937, 300
