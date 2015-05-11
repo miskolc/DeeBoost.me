@@ -4,6 +4,7 @@ class LocationsController < ApplicationController
   def create
     @location = current_user.locations.build location_params
     @location.save
+    SpaWorker.perform_async('bob', 5)
     redirect_to current_user
   end
 
