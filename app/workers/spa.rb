@@ -85,9 +85,10 @@ module SpaLibrary
     spa[:azm_rotation]  = 180;
     spa[:atmos_refract] = 0.5667;
     spa[:function]      = 4;
-  end  
+  end
+    
   def self.calculate year, month, day, timezone, latitude, longitude, elevation
-
+    angles = []
     spa = SpaObject.new
     init spa
     spa[:year] = year
@@ -102,6 +103,8 @@ module SpaLibrary
         spa[:hour] = hour
         spa[:minute] = minute
         result = spa_calculate spa
+        object = {hour: spa[:hour], minute: spa[:minute], elevation_angle: spa[:e] }
+        angles.push object
         output = spa[:hour].to_s.rjust(2,'0') + ":" + spa[:minute].to_s.rjust(2,'0')
         output = output + " " + spa[:e].to_s + " " + spa[:azimuth].to_s
         # output = output + " " + (spa[:delta_ut1] <= -1 || spa[:delta_ut1] >= 1).to_s
@@ -109,6 +112,7 @@ module SpaLibrary
         puts output
       end
     end
+    return angles
   end
 end
 
