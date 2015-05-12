@@ -9,6 +9,7 @@ class LocationsController < ApplicationController
   end
 
   def show
+    puts params[:date_time]
     @location = Location.where(user_id: current_user.id).first
     respond_to do |format|
       format.json {render json: @location }
