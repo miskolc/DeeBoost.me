@@ -7,7 +7,7 @@ var DateTimeGetter = (function(){
       date = new Date();
       $form.find("#date_time_year").val(date.getFullYear());
       $form.find("#date_time_day").val(date.getDate());
-      $form.find("#date_time_month").val(date.getMonth());
+      $form.find("#date_time_month").val(date.getMonth() + 1);
       timezoneString = "";
       offsetInHours = date.getTimezoneOffset() * -1 / 60;
       sign = offsetInHours < 0 ? "-" : "+";
