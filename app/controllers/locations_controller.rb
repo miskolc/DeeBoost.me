@@ -1,11 +1,10 @@
 class LocationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :parse_date_time, only: :create
 
   def create
     @location = current_user.locations.build location_params
     @location.save    
-    @day = @location.days.create date: @date
+    @day = @location.days.create day_params
     SpaWorker.perform_async(@day.id)
     redirect_to current_user
   end
@@ -23,12 +22,7 @@ class LocationsController < ApplicationController
       params.require(:location).permit(:longitude, :latitude)
     end
 
-    def parse_date_time
-      date_time = params.require(:date_time).permit(:year, :day, :month, :timezone)
-      @date = DateTime.new
-      @date = @date.change year: date_time[:year].to_i,
-                           day: date_time[:day].to_i,
-                           month: date_time[:month].to_i,
-                           offset: date_time[:timezone]
+    def day_params
+      params.require(date_time).permit(:year, :day, :month, :timezone)
     end
 end
