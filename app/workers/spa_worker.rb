@@ -5,8 +5,15 @@ class SpaWorker
   include Sidekiq::Worker
 
   def perform(date_id)
-    date = Day.find(date_id)
-    angles = SpaLibrary.calculate date.year, date.month, date.day, 3, 44.852, 24.937, 300
+    altitude = 300
+    date = Day.includes(:location).find(date_id)
+    angles = SpaLibrary.calculate date.year,
+                                  date.month,
+                                  date.day,
+                                  date.timezone,
+                                  date.location.latitude,
+                                  date.location.longitude,
+                                  altitude
     date.update angles: angles
   end
 end
