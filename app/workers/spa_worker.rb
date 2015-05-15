@@ -4,11 +4,16 @@ require File.join(File.expand_path(File.join(File.dirname(__FILE__))), 'spa.rb')
 class SpaWorker
   include Sidekiq::Worker
 
-  def perform(location_id)
-    puts 'Doing hard work' + File.join(File.expand_path(File.join(File.dirname(__FILE__))), 'spa.rb')
-    location = Location.find(location_id)
-    date = DateTime.now
-    angles = SpaLibrary.calculate date.year, date.month, date.day, 3, 44.852, 24.937, 300
-    location.days.create date: date, angles: angles
+  def perform(date_id)
+    altitude = 300
+    date = Day.includes(:location).find(date_id)
+    angles = SpaLibrary.calculate date.year,
+                                  date.month,
+                                  date.day,
+                                  date.timezone,
+                                  date.location.latitude,
+                                  date.location.longitude,
+                                  altitude
+    date.update angles: angles
   end
 end
