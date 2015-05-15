@@ -105,11 +105,6 @@ module SpaLibrary
         result = spa_calculate spa
         object = {hour: spa[:hour], minute: spa[:minute], elevation_angle: spa[:e] }
         angles.push object
-        output = spa[:hour].to_s.rjust(2,'0') + ":" + spa[:minute].to_s.rjust(2,'0')
-        output = output + " " + spa[:e].to_s + " " + spa[:azimuth].to_s
-        # output = output + " " + (spa[:delta_ut1] <= -1 || spa[:delta_ut1] >= 1).to_s
-        # output = output + " " + spa[:timezone].to_s
-        puts output
       end
     end
     return angles
