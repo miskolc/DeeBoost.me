@@ -23,6 +23,6 @@ class LocationsController < ApplicationController
     end
 
     def day_params
-      params.require(date_time).permit(:year, :day, :month, :timezone)
+      params.require(:date_time).permit(:year, :day, :month, :timezone)
     end
 end
