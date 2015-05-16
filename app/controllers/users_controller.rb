@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authorize_resource!
 
   def show
-    @current_location = current_user.locations.first
+    @current_location = current_user.locations.includes(:days).last
     @location = Location.new
     @location.user_id = current_user.id
   end
