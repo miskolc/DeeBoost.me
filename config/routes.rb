@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:show] do
-    resources :locations, only: [:show, :create]
+    resources :locations, only: [:show, :create] do
+      resources :days, only: [:show], defaults: {format: :json}
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
