@@ -20,7 +20,6 @@ var ChartDrawer = (function () {
       return parsed; 
     });
     parsedAngles = angles;
-    return angles;
   }
 
   var getLocationAngles = function() {
@@ -31,14 +30,13 @@ var ChartDrawer = (function () {
     });
   }
 
-  var drawAxisTickColors = function(angles) {
+  var drawAxisTickColors = function() {
     var data = new google.visualization.DataTable();
-    console.log("Helo2");
+    
     data.addColumn('timeofday', 'Time of Day');
     data.addColumn('number', 'Bellow 50\xB0 (no vitamin D)' );
     data.addColumn('number', 'Above 50\xB0 (vitamin D)' );
 
-    console.log(parsedAngles);
     data.addRows(parsedAngles);
 
     var options = {
@@ -94,14 +92,10 @@ var ChartDrawer = (function () {
   var init = function () {
     var options = {packages: ['corechart', 'bar'], callback: drawAxisTickColors};
     $.getJSON('/users/1/locations/1/days/1', function(data) {
-      var angles = parseLocationAngles(data);
-      //console.log(data);
-      //console.log(angles);
+      parseLocationAngles(data);
       google.load('visualization', '1', options );
-      google.setOnLoadCallback(function () {
-        //console.log(angles);
-        console.log("Helo");
-        drawAxisTickColors(angles);
+      google.setOnLoadCallback(function () {        
+        drawAxisTickColors();
       });
     });
   }
