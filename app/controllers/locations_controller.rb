@@ -2,9 +2,9 @@ class LocationsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @location = current_user.update_location location_params
-    # @location = current_user.locations.build location_params
-    # @location.save    
+    @location = current_user.locations.build location_params
+    @location.save
+    current_user.current_location.set_current_location @location    
     @day = @location.days.create day_params
     SpaWorker.perform_async(@day.id)
     redirect_to current_user
