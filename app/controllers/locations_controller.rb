@@ -2,8 +2,9 @@ class LocationsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @location = current_user.locations.build location_params
-    @location.save    
+    @location = current_user.update_location location_params
+    # @location = current_user.locations.build location_params
+    # @location.save    
     @day = @location.days.create day_params
     SpaWorker.perform_async(@day.id)
     redirect_to current_user
@@ -19,7 +20,7 @@ class LocationsController < ApplicationController
   private
 
     def location_params
-      params.require(:location).permit(:longitude, :latitude)
+      params.require(:location).permit(:longitude, :latitude, :current_location)
     end
 
     def day_params
