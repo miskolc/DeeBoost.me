@@ -91,7 +91,7 @@ var ChartDrawer = (function () {
 
   var init = function () {
     var options = {packages: ['corechart', 'bar'], callback: drawAxisTickColors};
-    $.getJSON('/users/1/locations/1/days/1', function(data) {
+    $.getJSON('/users/1/current_location/current_day', function(data) {
       parseLocationAngles(data);
       google.load('visualization', '1', options );
       google.setOnLoadCallback(function () {        
