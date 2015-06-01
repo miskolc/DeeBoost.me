@@ -7,21 +7,32 @@
 //= require_tree ./users_pages
 
 $(document).on('page:change', function () {
-  (
+  (  
   function(){
     var $noLocation = $(".no-location")
-        $form = $("#new_location");
+        $form = $("#new_location"),
+        $body = $("body")
+        $submit = $form.find(".js-submit");
     
     if($noLocation.length === 1) {
       DateTimeGetter.init($form);
       LocationGetter.init($form);
     } else {
-      DateTimeGetter.init($form);
+      //DateTimeGetter.init($form);
       ChartDrawer.init();
-      $form.find(".js-submit").on('click', function(e) {
+      console.log("Root1111");
+      //$form.find(".js-submit").on('click', function lambda(e) {
+      $submit.on('click', function lambda(e) {
          e.preventDefault();
          $form.find(".js-submit").unbind('click');
+         console.log("Root");
+         console.log($form);
+         $body.addClass("loading");
+         DateTimeGetter.init($form);
+
          LocationGetter.init($form);
+         //$form.find(".js-submit").on('click', lambda );
+         //$submit.on('click', lambda );
       });
     }
   })();

@@ -4,10 +4,14 @@ class LocationsController < ApplicationController
   def create
     @location = current_user.locations.build location_params
     @location.save
-    current_user.current_location.set_current_location @location    
+    unless current_user.current_location.id == @location.id
+      current_user.current_location.set_current_location @location    
+    end
     @day = @location.days.create day_params
     SpaWorker.perform_async(@day.id)
-    redirect_to current_user
+    respond_to do |format|
+      format.js
+    end
   end
 
   def show

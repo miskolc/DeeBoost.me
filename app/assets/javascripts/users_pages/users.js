@@ -1,5 +1,5 @@
 var ChartDrawer = (function () {
-  var parsedAngles;
+  var parsedAngles; 
 
   var parseLocationAngles = function(locationAngles) {
     var angles = [];
@@ -81,7 +81,7 @@ var ChartDrawer = (function () {
       legend: { position: 'top', maxLines: 20 },
       bar: { groupWidth: '90%' }
     };
-
+    $("body").removeClass("loading");
     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
     chart.draw(data, options);
     $(window).resize(function(){

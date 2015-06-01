@@ -1,5 +1,5 @@
 var DateTimeGetter = (function(){
-
+ 
     var _setDateTime = function() {   
       var date, timezoneString, offsetInHours, 
           sign, timezoneNumber;
@@ -10,7 +10,7 @@ var DateTimeGetter = (function(){
       $form.find("#date_time_month").val(date.getMonth() + 1);
       offsetInHours = date.getTimezoneOffset() * -1 / 60;
       $form.find("#date_time_timezone").val(offsetInHours);
-    }      
+    }       
 
     var init = function (form) {
         $form = form;
