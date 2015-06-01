@@ -11,10 +11,13 @@ $(document).on('page:change', function () {
   function(){
     var $noLocation = $(".no-location")
         $form = $("#new_location"),
-        $body = $("body")
+        $body = $("body"),
         $submit = $form.find(".js-submit");
     
     if($noLocation.length === 1) {
+      console.log("Loading");
+      $body.addClass("loading");
+      console.log("Loading1");
       DateTimeGetter.init($form);
       LocationGetter.init($form);
     } else {
