@@ -1,0 +1,10 @@
+setTimeout( function() {
+  var $locationForm = $(".location-form"); 
+  $("body").removeClass("loading");
+  $locationForm.removeClass("no-location");
+  $locationForm.addClass("has-location");
+  $locationForm.html("<%= j render(partial: 'users/location_form') %>")
+  $(document).trigger('first:location');
+  console.log($(document));
+  ChartDrawer.init();
+}, 1000);

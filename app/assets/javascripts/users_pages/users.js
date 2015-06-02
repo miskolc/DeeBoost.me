@@ -1,37 +1,43 @@
 var ChartDrawer = (function () {
+  var parsedAngles; 
 
-  function drawAxisTickColors() {
+  var parseLocationAngles = function(locationAngles) {
+    var angles = [];
+    angles = locationAngles.angles.map(function(angle) {
+      var parsed = []; coord = {}; 
+      coord["v"]= [angle["hour"],angle["minute"],0]; 
+      if(angle["minute"] === 0) {
+        var hour = angle["hour"] == 12 ? 12 : (angle["hour"] % 12);
+        coord["f"]= hour.toString()+" "+ (angle["hour"] < 12 ? "am": "pm"); 
+      } else {
+        coord["f"]= "";
+      }
+      parsed.push(coord);
+      under = angle["elevation_angle"] > 50 ? 50 : angle["elevation_angle"];
+      above = angle["elevation_angle"] > 50 ? angle["elevation_angle"] - 50 : 0;
+      parsed.push(under);
+      parsed.push(above);
+      return parsed; 
+    });
+    parsedAngles = angles;
+  }
+
+  var getLocationAngles = function() {
+    var locationAngles;
+    $.getJSON('/users/1/locations/1/days/1', function(data) {
+      parsedJSON = parseJSON(data);
+      //drawAxisTickColors 
+    });
+  }
+
+  var drawAxisTickColors = function() {
     var data = new google.visualization.DataTable();
+    
     data.addColumn('timeofday', 'Time of Day');
     data.addColumn('number', 'Bellow 50\xB0 (no vitamin D)' );
     data.addColumn('number', 'Above 50\xB0 (vitamin D)' );
 
-    data.addRows([
-      [{v: [1, 0, 0], f: '1 am'}, -30, 0],
-      [{v: [2, 0, 0], f: '1 am'}, -25, 0],
-      [{v: [3, 0, 0], f: '1 am'}, -20, 0],
-      [{v: [4, 0, 0], f: '2 am'}, -10, 0],
-      [{v: [5, 0, 0], f: '3 am'}, -4, 0],
-      [{v: [6, 0, 0], f: '4 am'}, 0, 0],
-      [{v: [7, 0, 0], f: '5 am'}, 10, 0],
-      [{v: [8, 0, 0], f: '8 am'}, 20, 0],
-      [{v: [9, 0, 0], f: '9 am'}, 30, 0],
-      [{v: [10, 0, 0], f:'10 am'}, 40, 0],
-      [{v: [11, 0, 0], f: '11 am'}, 50, 0],
-      [{v: [12, 0, 0], f: '12 pm'}, 50, 5],
-      [{v: [13, 0, 0], f: '1 pm'}, 50, 12],
-      [{v: [14, 0, 0], f: '2 pm'}, 50, 19],
-      [{v: [15, 0, 0], f: '3 pm'}, 50, 10],
-      [{v: [16, 0, 0], f: '4 pm'}, 50, 5],
-      [{v: [17, 0, 0], f: '5 pm'}, 50, 0],
-      [{v: [18, 0, 0], f: '6 pm'}, 40, 0],
-      [{v: [19, 0, 0], f: '7 pm'}, 30, 0],
-      [{v: [20, 0, 0], f:'8 pm'}, 20, 0],
-      [{v: [21, 0, 0], f: '9 pm'}, 10, 0],
-      [{v: [22, 0, 0], f: '10 pm'}, 5, 0],
-      [{v: [23, 0, 0], f: '11 pm'}, -8, 0],
-      [{v: [24, 0, 0], f: '12 pm'}, -17, 0],
-    ]);
+    data.addRows(parsedAngles);
 
     var options = {
       title: 'Time of Day when Vitamin D can be produced by human skin',
@@ -75,7 +81,7 @@ var ChartDrawer = (function () {
       legend: { position: 'top', maxLines: 20 },
       bar: { groupWidth: '90%' }
     };
-
+    $("body").removeClass("loading");
     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
     chart.draw(data, options);
     $(window).resize(function(){
@@ -85,12 +91,18 @@ var ChartDrawer = (function () {
 
   var init = function () {
     var options = {packages: ['corechart', 'bar'], callback: drawAxisTickColors};
-    google.load('visualization', '1', options );
-    google.setOnLoadCallback(drawAxisTickColors);
+    $.getJSON('/users/1/current_location/current_day', function(data) {
+      parseLocationAngles(data);
+      google.load('visualization', '1', options );
+      google.setOnLoadCallback(function () {        
+        drawAxisTickColors();
+      });
+    });
   }
 
   return {
-    init: init
+    init: init,
+    getLocationAngles: getLocationAngles
   };
 
 }());
