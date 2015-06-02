@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :days, only: [:show], defaults: {format: :json}
     end
     get 'current_location/current_day' => 'days#current_day'  
+    post 'locations/post_update' => 'locations#post_update', as: :locations_post_update
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
