@@ -6,9 +6,8 @@
 //= require_tree ./application/addons
 //= require_tree ./users_pages
 
-$(document).on('page:change', function () {
-  (  
-  function(){
+$(document).on('page:change first:location', function () {
+  ( function(){
     var $noLocation = $(".no-location")
         $form = $("#new_location"),
         $body = $("body"),

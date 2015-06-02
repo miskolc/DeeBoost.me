@@ -1,6 +1,6 @@
 
 <% if @current_location %>
-<div class="container has-location">
+<div class="container location-form has-location">
   <p><%= @current_location.longitude %></p>
   <p><%= @current_location.latitude %></p>
   <%= form_for( @location, url: user_locations_post_update_path(current_user), remote: true ) do |f| %>
@@ -21,8 +21,8 @@
   <div class="ajax-loader"></div>
 </div>
 <% else %>
-<div class="container no-location">
-  <%= form_for( @location, url: user_locations_path(current_user), remote: true ) do |f| %>
+<div class="container location-form no-location">
+  <%= form_for( @location, url: user_locations_path(current_user) ) do |f| %>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :longitude %>
     <%= f.hidden_field :latitude %>
