@@ -21,6 +21,7 @@ $(document).on('page:change first:location', function () {
       LocationGetter.init($form);
     } else {
       //DateTimeGetter.init($form);
+      KnobDrawer.init();
       ChartDrawer.init();
       console.log("Root1111");
       //$form.find(".js-submit").on('click', function lambda(e) {
