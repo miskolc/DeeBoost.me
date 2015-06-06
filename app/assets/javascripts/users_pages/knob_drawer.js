@@ -1,6 +1,34 @@
 var KnobDrawer = (function () {
-  var init = function () {
-     $(".knob").knob({
+  var $knobElement, formatFunction;
+
+  var _degreeFormat = function (value) {
+      return  parseInt(value)  + '°';
+  };
+
+  var _leadingZeros = function (value) {
+    return ( value < 10 ? "0" + value : "" + value );
+  };
+
+  var _timeFormat = function (value) {
+      var hours, minutes, seconds;
+      hours = Math.floor(value/3600);
+      minutes = Math.floor((value % 3600) / 60);
+      seconds = value % 60;
+      return _leadingZeros(hours) + ":" + _leadingZeros(minutes) + ":" + _leadingZeros(seconds);
+  };
+
+  var _chooseFormatFunction = function () {
+    if($knobElement.hasClass("knob-sunbathing-time") || 
+       $knobElement.hasClass("knob-current-time") ) {
+      return _timeFormat;
+    }
+    return _degreeFormat;
+  };
+
+  var init = function (knobElement) {
+     $knobElement = knobElement;
+     formatFunction = _chooseFormatFunction();
+     $knobElement.knob({
                     change : function (value) {
                         //console.log("change : " + value);
                     },
@@ -11,19 +39,10 @@ var KnobDrawer = (function () {
                     cancel : function () {
                         console.log("cancel : ", this);
                     },
-                    /*format : function (value) {
-                        return value + '%';
-                    },*/
-
-                    format : function (value) {
-                        console.log(value);
-                        console.log(parseInt(value));
-                        return  parseInt(value)  + '°';
-                    },
+                    format : formatFunction,
                     draw : function () {
-
+                        $knobElement.css("font-size","18px");
                         // "tron" case
-                        $(".knob").css("font-size","15px");
                         if(this.$.data('skin') == 'tron') {
 
                             this.cursorExt = 0.3;
@@ -57,7 +76,7 @@ var KnobDrawer = (function () {
                         }
                     }
                 });
-  }
+  };
 
   return {
     init: init

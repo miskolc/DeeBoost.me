@@ -1,8 +1,28 @@
 var ChartDrawer = (function () {
-  var parsedAngles; 
+  var anglesJSON,
+      parsedAngles,
+      sunbathingStart,
+      sunbathingEnd; 
+
+  var _currentTimeSeconds = function( ) {
+    var date = new Date();
+    return date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
+  }
+
+  var _currentTime = function () {
+    var date = new Date();
+    return [date.getHours(), date.getMinutes(), date.getSeconds()];
+  }
+
+  var currentElevationAngle = function () {
+    var currentTime = _currentTime(),
+        currentAnglePosition;
+    currentAnglePosition = currentTime[0] * 6 + Math.floor(currentTime[1]/10);
+    return Math.floor(anglesJSON[currentAnglePosition]["elevation_angle"]);
+  }
 
   var parseLocationAngles = function(locationAngles) {
-    var angles = [];
+    var angles = [], foundAngleAbove = false;
     angles = locationAngles.angles.map(function(angle) {
       var parsed = []; coord = {}; 
       coord["v"]= [angle["hour"],angle["minute"],0]; 
@@ -17,9 +37,25 @@ var ChartDrawer = (function () {
       above = angle["elevation_angle"] > 50 ? angle["elevation_angle"] - 50 : 0;
       parsed.push(under);
       parsed.push(above);
+      if(angle["elevation_angle"] >= 50) {
+        sunbathingEnd = angle;
+        if(!foundAngleAbove) {
+          foundAngleAbove = true;
+          sunbathingStart = angle;
+        }
+      }
       return parsed; 
     });
     parsedAngles = angles;
+  }
+
+  var drawKnobs = function () {
+    $elevationAngleKnob.val(currentElevationAngle);
+    KnobDrawer.init($elevationAngleKnob);
+    KnobDrawer.init($sunbathingTimeKnob);
+    KnobUpdater.init($sunbathingTimeKnob,-1);
+    // KnobDrawer.init($currentTimeKnob);
+    // KnobUpdater.init($currentTimeKnob,1);
   }
 
   var getLocationAngles = function() {
@@ -92,7 +128,14 @@ var ChartDrawer = (function () {
   var init = function () {
     var options = {packages: ['corechart', 'bar'], callback: drawAxisTickColors};
     $.getJSON('/users/1/current_location/current_day', function(data) {
+      anglesJSON = data.angles;
       parseLocationAngles(data);
+      drawKnobs();
+      // KnobDrawer.init($elevationAngleKnob);
+      // KnobDrawer.init($sunbathingTimeKnob);
+      // KnobUpdater.init($sunbathingTimeKnob,-1);
+      // KnobDrawer.init($currentTimeKnob);
+      // KnobUpdater.init($currentTimeKnob,1);
       google.load('visualization', '1', options );
       google.setOnLoadCallback(function () {        
         drawAxisTickColors();
@@ -102,7 +145,8 @@ var ChartDrawer = (function () {
 
   return {
     init: init,
-    getLocationAngles: getLocationAngles
+    getLocationAngles: getLocationAngles,
+    currentElevationAngle: currentElevationAngle
   };
 
 }());

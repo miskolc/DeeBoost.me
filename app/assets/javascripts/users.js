@@ -11,7 +11,11 @@ $(document).on('page:change first:location', function () {
     var $noLocation = $(".no-location")
         $form = $("#new_location"),
         $body = $("body"),
-        $submit = $form.find(".js-submit");
+        $submit = $form.find(".js-submit"),
+        $elevationAngleKnob = $(".knob-elevation-angle"),
+        $sunbathingTimeKnob = $(".knob-sunbathing-time"),
+        $currentTimeKnob = $(".knob-current-time"),
+        $nearestTimeKnob = $(".knob-nearest-time");
     
     if($noLocation.length === 1) {
       console.log("Loading");
@@ -21,7 +25,11 @@ $(document).on('page:change first:location', function () {
       LocationGetter.init($form);
     } else {
       //DateTimeGetter.init($form);
-      KnobDrawer.init();
+      // KnobDrawer.init($elevationAngleKnob);
+      // KnobDrawer.init($sunbathingTimeKnob);
+      // KnobUpdater.init($sunbathingTimeKnob,-1);
+      // KnobDrawer.init($currentTimeKnob);
+      // KnobUpdater.init($currentTimeKnob,1);
       ChartDrawer.init();
       console.log("Root1111");
       //$form.find(".js-submit").on('click', function lambda(e) {
