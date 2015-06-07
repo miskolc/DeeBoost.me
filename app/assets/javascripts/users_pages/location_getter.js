@@ -25,8 +25,10 @@ var LocationGetter = (function() {
     $form.find(".js-submit").unbind('click');
     $form.find(".js-submit").click();
     console.log("Root21-revol");
+
     setTimeout(function(){
       //$("#new_location").find(".js-submit").on('click', function(e) {
+      ChartDrawer.init();
       $form.find(".js-submit").on('click', function(e) {
          e.preventDefault();
          $form.find(".js-submit").unbind('click');
