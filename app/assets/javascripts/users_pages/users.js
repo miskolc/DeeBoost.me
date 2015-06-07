@@ -59,14 +59,6 @@ var ChartDrawer = (function () {
     KnobDrawer.init($elevationAngleKnob);
     KnobDrawer.init($sunbathingTimeKnob);
     KnobUpdater.init($sunbathingTimeKnob,-1);
-    console.log(sunbathingStart);
-
-    console.log(sunbathingStart.hour);
-    console.log(sunbathingStart.minute);
-    console.log(sunbathingStart.second);
-    console.log(timeToSeconds(sunbathingStart.hour,
-                                           sunbathingStart.minute,
-                                           sunbathingStart.second));
     $sunbathingStartKnob.val(timeToSeconds(sunbathingStart.hour,
                                            sunbathingStart.minute,
                                            sunbathingStart.second));
