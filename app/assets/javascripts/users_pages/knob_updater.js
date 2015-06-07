@@ -9,6 +9,7 @@ var KnobUpdater = (function() {
         time = [];
     // get hours minutes and seconds as an array
     time = $knobElement.val().match(/\d+/g);
+    console.log(time);
     second = parseInt(time[2]);
     minute = parseInt(time[1]);
     hour = parseInt(time[0]);

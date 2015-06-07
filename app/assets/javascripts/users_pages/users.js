@@ -55,17 +55,34 @@ var ChartDrawer = (function () {
   }
 
   var drawKnobs = function () {
+    var totalSunbathingTime, remainingSunbathingTime,
+        sunbathingStartTime, sunbathingEndTime;
+    
     $elevationAngleKnob.val(currentElevationAngle);
     KnobDrawer.init($elevationAngleKnob);
+
+    console.log(sunbathingStart);
+    
+    sunbathingStartTime = timeToSeconds(sunbathingStart.hour,
+                                        sunbathingStart.minute,
+                                        sunbathingStart.second);
+    
+    sunbathingEndTime = timeToSeconds(sunbathingEnd.hour,
+                                      sunbathingEnd.minute,
+                                      sunbathingEnd.second);
+    console.log(sunbathingEndTime);
+    totalSunbathingTime = sunbathingEndTime - sunbathingStartTime;
+    remainingSunbathingTime = sunbathingEndTime - _currentTimeSeconds();
+
+    $sunbathingTimeKnob.attr("data-max", totalSunbathingTime);
+    $sunbathingTimeKnob.val(remainingSunbathingTime);
     KnobDrawer.init($sunbathingTimeKnob);
     KnobUpdater.init($sunbathingTimeKnob,-1);
-    $sunbathingStartKnob.val(timeToSeconds(sunbathingStart.hour,
-                                           sunbathingStart.minute,
-                                           sunbathingStart.second));
+    
+    $sunbathingStartKnob.val(sunbathingStartTime);
     KnobDrawer.init($sunbathingStartKnob);
-    $sunbathingEndKnob.val(timeToSeconds(sunbathingEnd.hour,
-                                         sunbathingEnd.minute,
-                                         sunbathingEnd.second));
+    
+    $sunbathingEndKnob.val(sunbathingEndTime);
     KnobDrawer.init($sunbathingEndKnob);
     // KnobDrawer.init($currentTimeKnob);
     // KnobUpdater.init($currentTimeKnob,1);
