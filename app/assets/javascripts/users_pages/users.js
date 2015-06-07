@@ -14,6 +14,11 @@ var ChartDrawer = (function () {
     return [date.getHours(), date.getMinutes(), date.getSeconds()];
   }
 
+  var timeToSeconds = function (hour, minute, second) {
+    second = (typeof second === 'undefined') ? 0 : second; //second is optional
+    return hour * 3600 + minute * 60 + second;
+  }
+
   var currentElevationAngle = function () {
     var currentTime = _currentTime(),
         currentAnglePosition;
@@ -54,6 +59,22 @@ var ChartDrawer = (function () {
     KnobDrawer.init($elevationAngleKnob);
     KnobDrawer.init($sunbathingTimeKnob);
     KnobUpdater.init($sunbathingTimeKnob,-1);
+    console.log(sunbathingStart);
+
+    console.log(sunbathingStart.hour);
+    console.log(sunbathingStart.minute);
+    console.log(sunbathingStart.second);
+    console.log(timeToSeconds(sunbathingStart.hour,
+                                           sunbathingStart.minute,
+                                           sunbathingStart.second));
+    $sunbathingStartKnob.val(timeToSeconds(sunbathingStart.hour,
+                                           sunbathingStart.minute,
+                                           sunbathingStart.second));
+    KnobDrawer.init($sunbathingStartKnob);
+    $sunbathingEndKnob.val(timeToSeconds(sunbathingEnd.hour,
+                                         sunbathingEnd.minute,
+                                         sunbathingEnd.second));
+    KnobDrawer.init($sunbathingEndKnob);
     // KnobDrawer.init($currentTimeKnob);
     // KnobUpdater.init($currentTimeKnob,1);
   }

@@ -14,6 +14,8 @@ $(document).on('page:change first:location', function () {
         $submit = $form.find(".js-submit"),
         $elevationAngleKnob = $(".knob-elevation-angle"),
         $sunbathingTimeKnob = $(".knob-sunbathing-time"),
+        $sunbathingStartKnob = $(".knob-sunbathing-start"),
+        $sunbathingEndKnob = $(".knob-sunbathing-end"),
         $currentTimeKnob = $(".knob-current-time"),
         $nearestTimeKnob = $(".knob-nearest-time");
     
@@ -28,6 +30,8 @@ $(document).on('page:change first:location', function () {
       // KnobDrawer.init($elevationAngleKnob);
       // KnobDrawer.init($sunbathingTimeKnob);
       // KnobUpdater.init($sunbathingTimeKnob,-1);
+      // KnobDrawer.init($sunbathingStartKnob);
+      // KnobDrawer.init($sunbathingEndKnob);
       // KnobDrawer.init($currentTimeKnob);
       // KnobUpdater.init($currentTimeKnob,1);
       ChartDrawer.init();
