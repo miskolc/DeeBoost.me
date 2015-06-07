@@ -1,8 +1,33 @@
 var ChartDrawer = (function () {
-  var parsedAngles; 
+  var anglesJSON,
+      parsedAngles,
+      sunbathingStart,
+      sunbathingEnd; 
+
+  var _currentTimeSeconds = function( ) {
+    var date = new Date();
+    return date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
+  }
+
+  var _currentTime = function () {
+    var date = new Date();
+    return [date.getHours(), date.getMinutes(), date.getSeconds()];
+  }
+
+  var timeToSeconds = function (hour, minute, second) {
+    second = (typeof second === 'undefined') ? 0 : second; //second is optional
+    return hour * 3600 + minute * 60 + second;
+  }
+
+  var currentElevationAngle = function () {
+    var currentTime = _currentTime(),
+        currentAnglePosition;
+    currentAnglePosition = currentTime[0] * 6 + Math.floor(currentTime[1]/10);
+    return Math.floor(anglesJSON[currentAnglePosition]["elevation_angle"]);
+  }
 
   var parseLocationAngles = function(locationAngles) {
-    var angles = [];
+    var angles = [], foundAngleAbove = false;
     angles = locationAngles.angles.map(function(angle) {
       var parsed = []; coord = {}; 
       coord["v"]= [angle["hour"],angle["minute"],0]; 
@@ -17,9 +42,50 @@ var ChartDrawer = (function () {
       above = angle["elevation_angle"] > 50 ? angle["elevation_angle"] - 50 : 0;
       parsed.push(under);
       parsed.push(above);
+      if(angle["elevation_angle"] >= 50) {
+        sunbathingEnd = angle;
+        if(!foundAngleAbove) {
+          foundAngleAbove = true;
+          sunbathingStart = angle;
+        }
+      }
       return parsed; 
     });
     parsedAngles = angles;
+  }
+
+  var drawKnobs = function () {
+    var totalSunbathingTime, remainingSunbathingTime,
+        sunbathingStartTime, sunbathingEndTime;
+    
+    $elevationAngleKnob.val(currentElevationAngle);
+    KnobDrawer.init($elevationAngleKnob);
+
+    console.log(sunbathingStart);
+    
+    sunbathingStartTime = timeToSeconds(sunbathingStart.hour,
+                                        sunbathingStart.minute,
+                                        sunbathingStart.second);
+    
+    sunbathingEndTime = timeToSeconds(sunbathingEnd.hour,
+                                      sunbathingEnd.minute,
+                                      sunbathingEnd.second);
+    console.log(sunbathingEndTime);
+    totalSunbathingTime = sunbathingEndTime - sunbathingStartTime;
+    remainingSunbathingTime = sunbathingEndTime - _currentTimeSeconds();
+
+    $sunbathingTimeKnob.attr("data-max", totalSunbathingTime);
+    $sunbathingTimeKnob.val(remainingSunbathingTime);
+    KnobDrawer.init($sunbathingTimeKnob);
+    KnobUpdater.init($sunbathingTimeKnob,-1);
+    
+    $sunbathingStartKnob.val(sunbathingStartTime);
+    KnobDrawer.init($sunbathingStartKnob);
+    
+    $sunbathingEndKnob.val(sunbathingEndTime);
+    KnobDrawer.init($sunbathingEndKnob);
+    // KnobDrawer.init($currentTimeKnob);
+    // KnobUpdater.init($currentTimeKnob,1);
   }
 
   var getLocationAngles = function() {
@@ -92,7 +158,14 @@ var ChartDrawer = (function () {
   var init = function () {
     var options = {packages: ['corechart', 'bar'], callback: drawAxisTickColors};
     $.getJSON('/users/1/current_location/current_day', function(data) {
+      anglesJSON = data.angles;
       parseLocationAngles(data);
+      drawKnobs();
+      // KnobDrawer.init($elevationAngleKnob);
+      // KnobDrawer.init($sunbathingTimeKnob);
+      // KnobUpdater.init($sunbathingTimeKnob,-1);
+      // KnobDrawer.init($currentTimeKnob);
+      // KnobUpdater.init($currentTimeKnob,1);
       google.load('visualization', '1', options );
       google.setOnLoadCallback(function () {        
         drawAxisTickColors();
@@ -102,7 +175,8 @@ var ChartDrawer = (function () {
 
   return {
     init: init,
-    getLocationAngles: getLocationAngles
+    getLocationAngles: getLocationAngles,
+    currentElevationAngle: currentElevationAngle
   };
 
 }());
