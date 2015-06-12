@@ -110,6 +110,8 @@ var ChartDrawer = (function () {
     var options = {
       title: 'Time of Day when Vitamin D can be produced by human skin',
       focusTarget: 'category',
+      colors: ['#2e6da4','#FF7E00'],
+      is3D:true,
       hAxis: {
         title: 'Time of Day',
         format: 'h:mm a',
