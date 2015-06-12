@@ -7,6 +7,21 @@
     position: relative;
     top: 85px;
   }
+  @media only screen and (max-height: 400px) {
+    .container.chart-container {
+      height: 300px;
+    }
+  }
+  @media only screen and (min-height: 401px) and (max-height: 800px) {
+    .container.chart-container {
+      height: 500px;
+    }
+  }
+  @media only screen and (min-height: 801px) {
+    .container.chart-container {
+      height: 300px;
+    }
+  }
 }
 
 
@@ -54,6 +69,17 @@
 }
 
 /* col-lg */
+@media only screen and (min-width: 1200px) {
+  .users_pages .col-xs-12:first-child {
+    padding-left: 0;
+  }
+
+  .users_pages .col-xs-12:last-child {
+    padding-right: 0;
+  }
+}
+
+
 @media only screen and (min-width: 1200px) {
   .users_pages .col-xs-12:first-child {
     padding-left: 0;
