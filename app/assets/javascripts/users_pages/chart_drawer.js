@@ -119,13 +119,13 @@ var ChartDrawer = (function () {
         },
         textStyle: {
           fontSize: 14,
-          color: '#053061',
+          color: '#2e6da4',
           bold: true,
           italic: false
         },
         titleTextStyle: {
           fontSize: 18,
-          color: '#053061',
+          color: '#2e6da4',
           bold: true,
           italic: false
         }
@@ -134,13 +134,13 @@ var ChartDrawer = (function () {
         title: 'Elevation angle (degrees)',
         textStyle: {
           fontSize: 18,
-          color: '#67001f',
+          color: '#2e6da4',
           bold: false,
           italic: false
         },
         titleTextStyle: {
           fontSize: 18,
-          color: '#67001f',
+          color: '#2e6da4',
           bold: true,
           italic: false
         }
@@ -168,7 +168,7 @@ var ChartDrawer = (function () {
       // KnobUpdater.init($sunbathingTimeKnob,-1);
       // KnobDrawer.init($currentTimeKnob);
       // KnobUpdater.init($currentTimeKnob,1);
-      google.load('visualization', '1', options );
+      google.load('visualization', '1.1', options );
       google.setOnLoadCallback(function () {        
         drawAxisTickColors();
       });
