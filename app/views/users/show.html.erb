@@ -46,8 +46,6 @@
   </div> -->
 </div>
 <div class="container location-form has-location">
-  <p><%= @current_location.longitude %></p>
-  <p><%= @current_location.latitude %></p>
   <%= form_for( @location, url: user_locations_post_update_path(current_user), remote: true ) do |f| %>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :longitude %>
