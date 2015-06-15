@@ -108,7 +108,7 @@ var ChartDrawer = (function () {
     data.addRows(parsedAngles);
 
     var options = {
-      title: 'Time of Day when Vitamin D can be produced by human skin',
+      title: 'Solar Elevation angle values today',
       focusTarget: 'category',
       colors: ['#2e6da4','#FF7E00'],
       is3D:true,
