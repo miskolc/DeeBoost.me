@@ -1,12 +1,31 @@
 .users_pages{
+  margin: 0 30px;
  .navigation {
     background-color: rgba(50, 54, 55, 0.7);
+  }
+
+  .padding-wrapper {
+    //padding: 0 30px;
+  }
+  .padding-wrapper .container {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .container.content {
     position: relative;
     top: 85px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
+  
+  .container.knobs-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   @media only screen and (max-height: 400px) {
     .container.chart-container {
       height: 300px;
@@ -27,9 +46,15 @@
 
 /* col-xs */
 @media only screen and (max-width: 767px) {
-  .users_pages .col-xs-12 {
-    padding-right: 0;
-    padding-left: 0;
+  .users_pages {
+    margin: 0 15px;
+    .container.content {
+      top: 70px;
+    }
+    .col-xs-12 {
+      padding-right: 0;
+      padding-left: 0;
+    }
   }
 }
 
@@ -37,16 +62,18 @@
 /* col-sm */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .users_pages { 
-    .col-xs-12:nth-child(odd) {
-      padding-left: 0;
-      padding-right: 10px;
+    .knobs-container {
+      .col-xs-12:nth-child(odd) {
+        padding-left: 0;
+        padding-right: 10px;
+      }
+      
+      .col-xs-12:nth-child(even) {
+        padding-right: 0;
+        padding-left: 10px;
+      }
     }
     
-    .col-xs-12:nth-child(even) {
-      padding-right: 0;
-      padding-left: 10px;
-    }
-
     .container {
       padding: 0;
     }
@@ -56,12 +83,15 @@
 /* col-md */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .users_pages { 
-    .col-xs-12:nth-child(odd) {
-      padding-left: 0;
+    .knobs-container {
+      .col-xs-12:nth-child(odd) {
+        padding-left: 0;
+      }
+      .col-xs-12:nth-child(even) {
+        padding-right: 0;
+      }
     }
-    .col-xs-12:nth-child(even) {
-      padding-right: 0;
-    }
+
     .container {
       padding: 0;
     }
@@ -81,12 +111,20 @@
 
 
 @media only screen and (min-width: 1200px) {
-  .users_pages .col-xs-12:first-child {
-    padding-left: 0;
-  }
+  .users_pages { 
+    .col-xs-12:first-child {
+      padding-left: 0;
+    }
 
-  .users_pages .col-xs-12:last-child {
-    padding-right: 0;
+    .col-xs-12:last-child {
+      padding-right: 0;
+    }
+
+    .navbar {
+      .container {
+        padding: 0;
+      }
+    }
   }
 }
 
