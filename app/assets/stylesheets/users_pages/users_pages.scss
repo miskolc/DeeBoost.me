@@ -43,9 +43,9 @@
   }
 }
 
-
-/* col-xs */
-@media only screen and (max-width: 767px) {
+/* Add 60px to every width */
+/* col-xs < 767 */
+@media only screen and (max-width: 787px) {
   .users_pages {
     margin: 0 15px;
     .container.content {
@@ -58,9 +58,15 @@
   }
 }
 
-
-/* col-sm */
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 788px) {
+  .users_pages {
+    .navbar-right {
+      //margin-right: 0;
+    }
+  }
+}
+/* col-sm 768 - 991 */
+@media only screen and (min-width: 788px) and (max-width: 1011px) {
   .users_pages { 
     .knobs-container {
       .col-xs-12:nth-child(odd) {
@@ -73,7 +79,7 @@
         padding-left: 10px;
       }
     }
-    
+
     .container {
       padding: 0;
     }
