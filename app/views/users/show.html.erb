@@ -1,6 +1,6 @@
 
 <% if @current_location %>
-<div class="container knobs-container">
+<div class="container-fluid knobs-container">
   <div class="col-md-6 col-sm-6 col-lg-3 col-xs-12">
     <div class="panel panel-primary">
       <div class="panel-heading"><b>Elevation Angle</b></div>
@@ -45,7 +45,7 @@
      <div class="panel-footer" style="color:#337ab7">The current time on your device.</div>
   </div> -->
 </div>
-<div class="container location-form has-location">
+<div class="container-fluid location-form has-location">
   <%= form_for( @location, url: user_locations_post_update_path(current_user), remote: true ) do |f| %>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :longitude %>
@@ -58,7 +58,7 @@
     <%= f.submit "Update Location", class: "btn btn-sand js-submit", style: "margin-bottom: 20px" %>
   <% end %>
 </div>
-<div class="container chart-container col-md-12 col-lg-12 col-xs-12 col-sm-12">
+<div class="container-fluid chart-container col-md-12 col-lg-12 col-xs-12 col-sm-12">
   <div id="chart_div" style="height: 100%">
   </div>
   <div class="ajax-loader"></div>
