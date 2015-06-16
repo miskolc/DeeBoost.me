@@ -1,7 +1,9 @@
 .users_pages{
-  margin: 0 30px;
  .navigation {
     background-color: rgba(50, 54, 55, 0.7);
+    .container-fluid {
+      padding: 0 15px !important;
+    }
   }
 
   .padding-wrapper {
@@ -19,6 +21,7 @@
     padding-right: 0;
     margin-left: auto;
     margin-right: auto;
+    padding: 0 15px !important;
   }
   
   .container-fluid.knobs-container {
@@ -47,7 +50,6 @@
 /* col-xs < 767 */
 @media only screen and (max-width: 767px) {
   .users_pages {
-    margin: 0 15px;
     .container-fluid.content {
       top: 70px;
     }
@@ -60,8 +62,16 @@
 
 @media only screen and (min-width: 768px) {
   .users_pages {
-    .navbar-right {
-      //margin-right: 0;
+    .navigation {
+      .container-fluid {
+        padding: 0 30px !important;
+      }
+    }
+    .container-fluid.content {
+      padding: 0 30px !important;
+      .container-fluid {
+        padding: 0;
+      }
     }
   }
 }
@@ -78,10 +88,6 @@
         padding-right: 0;
         padding-left: 10px;
       }
-    }
-
-    .container-fluid {
-      padding: 0;
     }
   } 
 }
