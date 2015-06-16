@@ -22,6 +22,9 @@
     margin-left: auto;
     margin-right: auto;
     padding: 0 15px !important;
+    .container-fluid {
+      padding: 0;
+    }
   }
   
   .container-fluid.knobs-container {
