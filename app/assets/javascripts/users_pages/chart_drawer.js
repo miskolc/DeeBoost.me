@@ -108,8 +108,10 @@ var ChartDrawer = (function () {
     data.addRows(parsedAngles);
 
     var options = {
-      title: 'Time of Day when Vitamin D can be produced by human skin',
+      title: 'Solar Elevation angle values today',
       focusTarget: 'category',
+      colors: ['#2e6da4','#FF7E00'],
+      is3D:true,
       hAxis: {
         title: 'Time of Day',
         format: 'h:mm a',
@@ -119,13 +121,13 @@ var ChartDrawer = (function () {
         },
         textStyle: {
           fontSize: 14,
-          color: '#053061',
+          color: '#2e6da4',
           bold: true,
           italic: false
         },
         titleTextStyle: {
           fontSize: 18,
-          color: '#053061',
+          color: '#2e6da4',
           bold: true,
           italic: false
         }
@@ -134,13 +136,13 @@ var ChartDrawer = (function () {
         title: 'Elevation angle (degrees)',
         textStyle: {
           fontSize: 18,
-          color: '#67001f',
+          color: '#2e6da4',
           bold: false,
           italic: false
         },
         titleTextStyle: {
           fontSize: 18,
-          color: '#67001f',
+          color: '#2e6da4',
           bold: true,
           italic: false
         }
@@ -168,7 +170,7 @@ var ChartDrawer = (function () {
       // KnobUpdater.init($sunbathingTimeKnob,-1);
       // KnobDrawer.init($currentTimeKnob);
       // KnobUpdater.init($currentTimeKnob,1);
-      google.load('visualization', '1', options );
+      google.load('visualization', '1.1', options );
       google.setOnLoadCallback(function () {        
         drawAxisTickColors();
       });

@@ -1,45 +1,51 @@
 
 <% if @current_location %>
-<div class="contain col-md-12 col-lg-12 col-xs-12">
-  <div class="panel panel-primary">
-    <div class="panel-heading"><b>Elevation Angle</b></div>
-    <div class="panel-body text-center">
-      <input class="knob-elevation-angle" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="360" readonly value="75"/>
+<div class="container-fluid knobs-container">
+  <div class="col-md-6 col-sm-6 col-lg-3 col-xs-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><b>Elevation Angle</b></div>
+      <div class="panel-body text-center">
+        <input class="knob-elevation-angle" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="360" readonly value="75"/>
+      </div>
+       <div class="panel-footer" style="color:#337ab7">Vitamin D can be produced when the elevation angle above is <b>50°</b>.</div>
     </div>
-     <div class="panel-footer" style="color:#337ab7">Vitamin D can be produced when the elevation angle above is <b>50°</b>.</div>
   </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">Sunbathing time left</div>
-    <div class="panel-body text-center">
-      <input class="knob-sunbathing-time" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="360" readonly disabled value="75"/>
+  <div class="col-md-6 col-sm-6 col-lg-3 col-xs-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Sunbathing time left</div>
+      <div class="panel-body text-center">
+        <input class="knob-sunbathing-time" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="360" readonly disabled value="75"/>
+      </div>
+       <div class="panel-footer" style="color:#337ab7">The amount of time left until the elevation angle will be below <b>50°</b>.</div>
     </div>
-     <div class="panel-footer" style="color:#337ab7">The amount of time left until the elevation angle will be below <b>50°</b>.</div>
-  </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">Sunbathing time begins at</div>
-    <div class="panel-body text-center">
-      <input class="knob-sunbathing-start" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="86400" readonly disabled value="75"/>
+  </div>  
+  <div class="col-md-6  col-sm-6 col-lg-3 col-xs-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Sunbathing time begins at</div>
+      <div class="panel-body text-center">
+        <input class="knob-sunbathing-start" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="86400" readonly disabled value="75"/>
+      </div>
+       <div class="panel-footer" style="color:#337ab7">From this moment the elevation angle is above <b>50°</b> and your body can produce Vitamin D. </div>
     </div>
-     <div class="panel-footer" style="color:#337ab7">From this moment the elevation angle is above <b>50°</b> therefore your body can produce Vitamin D. </div>
   </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">Sunbathing time ends at</div>
-    <div class="panel-body text-center">
-      <input class="knob-sunbathing-end" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="86400" readonly disabled value="75"/>
+  <div class="col-md-6 col-sm-6 col-lg-3 col-xs-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Sunbathing time ends at</div>
+      <div class="panel-body text-center">
+        <input class="knob-sunbathing-end" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="86400" readonly disabled value="75"/>
+      </div>
+       <div class="panel-footer" style="color:#337ab7">After this moment the elevation angle is below <b>50°</b> and your body can't produce Vitamin D.</div>
     </div>
-     <div class="panel-footer" style="color:#337ab7">After this moment the elevation angle is below <b>50°</b> therefore your body will not produce Vitamin D.</div>
   </div>
-  <div class="panel panel-primary">
+  <!-- <div class="panel panel-primary">
     <div class="panel-heading">Current Time</div>
     <div class="panel-body text-center">
       <input class="knob-current-time" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="86400" readonly disabled value="75"/>
     </div>
      <div class="panel-footer" style="color:#337ab7">The current time on your device.</div>
-  </div>
+  </div> -->
 </div>
-<div class="container location-form has-location">
-  <p><%= @current_location.longitude %></p>
-  <p><%= @current_location.latitude %></p>
+<div class="container-fluid location-form has-location">
   <%= form_for( @location, url: user_locations_post_update_path(current_user), remote: true ) do |f| %>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :longitude %>
@@ -49,10 +55,10 @@
     <%= hidden_field :date_time, :year %>
     <%= hidden_field :date_time, :day %>
     <%= hidden_field :date_time, :month %>
-    <%= f.submit "Update Location", class: "btn btn-default btn-sand js-submit", style: "margin-bottom: 20px" %>
+    <%= f.submit "Update Location", class: "btn btn-sand js-submit", style: "margin-bottom: 20px" %>
   <% end %>
 </div>
-<div class="container col-md-12 col-lg-12 col-xs-12" style="height: 240px">
+<div class="container-fluid chart-container col-md-12 col-lg-12 col-xs-12 col-sm-12">
   <div id="chart_div" style="height: 100%">
   </div>
   <div class="ajax-loader"></div>
