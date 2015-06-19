@@ -16,7 +16,9 @@
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: rgba(255, 213, 122, 1);
+  font-weight: bold;
+  font-size: 17px;
+  color: rgba(249, 203, 103, 1);
 }
 
 .navbar-default .navbar-nav > li > a:hover {
@@ -26,6 +28,6 @@
 
 @media (max-width: 768px) {
   .navbar-collapse.collapse {
-    background-color: rgba(50, 50, 50, 0.3);
+    background-color: rgba(58, 58, 58, 0.62);;
   }
 }
