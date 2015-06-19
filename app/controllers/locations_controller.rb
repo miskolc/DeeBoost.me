@@ -1,5 +1,10 @@
 class LocationsController < ApplicationController
   before_action :authenticate_user!
+  layout 'users'
+
+  def index
+    @locations = current_user.locations.paginate(page: params[:page], :per_page => 5)
+  end
 
   def create
     @new_location = current_user.locations.build location_params

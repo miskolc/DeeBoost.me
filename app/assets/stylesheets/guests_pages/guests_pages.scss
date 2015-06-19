@@ -2,3 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.guests_pages {
+  .bg-color {
+    overflow: auto;
+    .container.content {
+      margin: 100px auto 10% auto;
+    }
+  }
+}

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:show] do
-    resources :locations, only: [:show, :create] do
+    resources :locations, only: [:index, :show, :create] do
       resources :days, only: [:show], defaults: {format: :json}
     end
     get 'current_location/current_day' => 'days#current_day'  
