@@ -48,6 +48,7 @@ class LocationsController < ApplicationController
     @location = current_user.locations.find_by id: params[:id]
     @location.destroy
     @page = params[:page].to_i
+    @page = 1 unless @page > 0
     @locations = current_user.locations.paginate(page: @page, :per_page => 5)
     if @locations.length == 0
       @page = @page == 1 ? @page : @page - 1
