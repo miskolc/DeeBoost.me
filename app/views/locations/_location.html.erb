@@ -2,5 +2,5 @@
   <td><%= addition_date_for location %></td>
   <td><%= location.latitude %></td>
   <td><%= location.longitude %></td>
-  <td><%= link_to "Delete Location", user_location_path(current_user, location, page: params[:page]), method: :delete, remote: true %></td>
+  <td><%= link_to "Delete Location", user_location_path(current_user, location, page: page), method: :delete, remote: true %></td>
 </tr>

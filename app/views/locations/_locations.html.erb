@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <%= render locations %>
+      <%= render partial: 'location', collection: locations, as: :location, locals: {page: page} %>
     </tbody>
  </table>
 </div>

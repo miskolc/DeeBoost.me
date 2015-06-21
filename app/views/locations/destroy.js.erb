@@ -1,2 +1,2 @@
 //$('#location_<%= @location.id %>').remove();
-$('.js-locations-table').html("<%= j render(partial: 'locations', locals: {locations: @locations}) %>");
+$('.js-locations-table').html("<%= j render(partial: 'locations', locals: {locations: @locations, page: @page}) %>");
