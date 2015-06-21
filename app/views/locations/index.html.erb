@@ -1,19 +1,7 @@
 <div class="pagini">
   <%= will_paginate @locations %>
   <div class="table-responsive">
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>Addition Date</th>
-          <th>Latitude</th>
-          <th>Longitude</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render @locations %>
-      </tbody>
-   </table>
+    <%= render partial: "locations", locals: {locations: @locations} %>
   </div>
   <%= will_paginate @locations, :param_name => :page %>
 </div>
