@@ -46,6 +46,7 @@ class LocationsController < ApplicationController
   def destroy
     @location = current_user.locations.find_by id: params[:id]
     @location.destroy
+    @locations = current_user.locations.paginate(page: params[:page], :per_page => 5)
     respond_to do |format|
       format.js
     end
