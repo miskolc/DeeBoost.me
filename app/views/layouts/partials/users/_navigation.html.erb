@@ -11,6 +11,7 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Locations", user_locations_path(current_user) %></li>
         <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
       </ul>
     </div><!--/.nav-collapse -->
