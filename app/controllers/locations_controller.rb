@@ -43,6 +43,14 @@ class LocationsController < ApplicationController
     end
   end
 
+  def destroy
+    @location = current_user.locations.find_by id: params[:id]
+    @location.destroy
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
     def location_params
