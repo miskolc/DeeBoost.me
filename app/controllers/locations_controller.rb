@@ -23,6 +23,10 @@ class LocationsController < ApplicationController
     # end
   end
 
+  def set_as_current_location
+    
+  end
+
   def post_update
     @location = current_user.locations.build location_params
     @location.save
