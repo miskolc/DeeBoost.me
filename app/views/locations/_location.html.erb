@@ -3,5 +3,5 @@
   <td><%= location.latitude %></td>
   <td><%= location.longitude %></td>
   <td><%= link_to "Delete Location", user_location_path(current_user, location), method: :delete, remote: true %></td>
-  <td><%= link_to "Set as Current Location", '/' unless location.current_location? %></td>
+  <td><%= render partial: "location_form", locals: { location: location } %> </td>
 </tr>
