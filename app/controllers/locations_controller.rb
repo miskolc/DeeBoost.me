@@ -23,8 +23,14 @@ class LocationsController < ApplicationController
     # end
   end
 
-  def set_as_current_location
-    
+  def update
+    @new_location = Location.find_by id: params[:id]
+    @old_location = current_user.current_location
+    current_user.current_location.set_current_location @new_location
+    @old_location.current_location = false
+    respond_to do |format|
+      format.js
+    end
   end
 
   def post_update

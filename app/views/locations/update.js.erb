@@ -1,0 +1,4 @@
+$("#edit_location_<%= @new_location.id %>").remove();
+$("#location_<%= @old_location.id %> td:last-child").html(
+  "<%= j render(partial: 'location_form', locals: { location: @old_location }) %>"
+);
