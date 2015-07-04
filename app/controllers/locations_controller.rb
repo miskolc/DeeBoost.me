@@ -24,7 +24,7 @@ class LocationsController < ApplicationController
   end
 
   def update
-    @new_location = Location.find_by id: params[:id]
+    @new_location = current_user.locations.find_by id: params[:id]
     @old_location = current_user.current_location
     current_user.current_location.set_current_location @new_location
     @old_location.current_location = false
