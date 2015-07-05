@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
   layout 'users'
 
   def index
-    @locations = current_user.locations.paginate(page: params[:page], :per_page => 5).order("current_location DESC, id DESC")
+    @locations = current_user.locations_for params[:page]
   end
 
   def create
