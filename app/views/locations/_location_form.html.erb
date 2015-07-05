@@ -1,4 +1,9 @@
-<% unless location.current_location? %>
+<% if location.current_location? %>
+  <div class="btn btn-success"  style="padding-right:25px">
+    <i class="glyphicon glyphicon-map-marker" style="margin-right:12px"></i>
+    <b>Current Location</b>
+  </div>
+<% else %>
   <%= form_for [current_user, location], remote: true do |f| %>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :longitude %>
