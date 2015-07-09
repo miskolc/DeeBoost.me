@@ -2,6 +2,8 @@
   <td><%= addition_date_for location %></td>
   <td><%= location.latitude %></td>
   <td><%= location.longitude %></td>
-  <td class="delete_location"><%= link_to "Delete Location", user_location_path(current_user, location), method: :delete, remote: true %></td>
+  <td class="delete_location">
+  <%= link_to raw("<i class='glyphicon glyphicon-remove' style=''></i><b>Delete Location</b>"), user_location_path(current_user, location), method: :delete, class: "btn btn-danger", remote: true  %>
+  </td>
   <td><%= render partial: "location_form", locals: { location: location } %> </td>
 </tr>
