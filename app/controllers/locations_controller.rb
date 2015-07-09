@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
   layout 'users'
 
   def index
-    @locations = current_user.locations.paginate(page: params[:page], :per_page => 5)
+    @locations = current_user.locations_for params[:page]
   end
 
   def create
@@ -21,6 +21,16 @@ class LocationsController < ApplicationController
     # respond_to do |format|
     #   format.js
     # end
+  end
+
+  def update
+    @new_location = current_user.locations.find_by id: params[:id]
+    @old_location = current_user.current_location
+    current_user.current_location.set_current_location @new_location
+    @old_location.current_location = false
+    respond_to do |format|
+      format.js
+    end
   end
 
   def post_update

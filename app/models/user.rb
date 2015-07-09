@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
     self.locations.find_by current_location: true
   end
 
+  def locations_for page
+    locations.paginate(page: page, :per_page => 5).order("current_location DESC, id DESC")
+  end
+
 end

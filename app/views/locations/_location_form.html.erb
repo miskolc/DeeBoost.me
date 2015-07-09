@@ -1,0 +1,14 @@
+<% if location.current_location? %>
+  <div class="btn btn-success">
+    <i class="glyphicon glyphicon-map-marker"></i>
+    <b>Current Location</b>
+  </div>
+<% else %>
+  <%= form_for [current_user, location], remote: true do |f| %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :longitude %>
+    <%= f.hidden_field :latitude %>
+    <%= f.hidden_field :current_location, value: true %>
+    <%= f.submit "Set as Current Location", class: "btn btn-sand js-submit" %>
+  <% end %>
+<% end %>

@@ -1,0 +1,9 @@
+$("#location_<%= @new_location.id %> td:last-child").html(
+  "<%= j render(partial: 'location_form', locals: { location: @new_location }) %>"
+);
+$("#location_<%= @new_location.id %>").addClass("current_location");
+$("#location_<%= @old_location.id %> td:last-child").html(
+  "<%= j render(partial: 'location_form', locals: { location: @old_location }) %>"
+);
+$("#location_<%= @old_location.id %>").removeClass("current_location");
+

@@ -1,5 +1,7 @@
 <div class="pagini">
-  <%= will_paginate @locations %>
+  <div class="digg_pagination">
+    <%= will_paginate @locations %>
+  </div>  
   <div class="table-responsive">
     <table class="table table-striped table-hover">
       <thead>
@@ -8,6 +10,7 @@
           <th>Latitude</th>
           <th>Longitude</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -15,5 +18,7 @@
       </tbody>
    </table>
   </div>
-  <%= will_paginate @locations, :param_name => :page %>
+  <div class="digg_pagination">
+    <%= will_paginate @locations, :param_name => :page %>
+  </div>
 </div>
