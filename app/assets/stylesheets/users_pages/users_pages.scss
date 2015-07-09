@@ -30,6 +30,12 @@
   .container-fluid.knobs-container {
     padding-left: 0;
     padding-right: 0;
+    .panel-heading {
+      i.glyphicon {
+        float: right;
+        top: 3px;
+      }
+    }
   }
 
   @media only screen and (max-height: 400px) {
