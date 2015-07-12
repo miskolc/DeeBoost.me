@@ -5,12 +5,12 @@ var PanelController = (function(){
   var _togglePanel = function () {
     var collapser = $(this);
     collapser.closest(".js-panel").find(".panel-body").collapse('toggle');
-    if(collapser.hasClass("glyphicon-minus")) {
-      collapser.addClass("glyphicon-eye-open");
-      collapser.removeClass("glyphicon-minus");
+    if(collapser.hasClass("glyphicon-chevron-up")) {
+      collapser.addClass("glyphicon-chevron-down");
+      collapser.removeClass("glyphicon-chevron-up");
     } else {
-      collapser.addClass("glyphicon-minus");
-      collapser.removeClass("glyphicon-eye-open");
+      collapser.addClass("glyphicon-chevron-up");
+      collapser.removeClass("glyphicon-chevron-down");
     }
   }
 
