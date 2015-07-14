@@ -34,6 +34,7 @@ $(document).on('page:change first:location', function () {
       // KnobDrawer.init($sunbathingEndKnob);
       // KnobDrawer.init($currentTimeKnob);
       // KnobUpdater.init($currentTimeKnob,1);
+      PanelController.init();
       ChartDrawer.init();
       console.log("Root1111");
       //$form.find(".js-submit").on('click', function lambda(e) {
