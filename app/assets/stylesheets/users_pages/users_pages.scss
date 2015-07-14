@@ -97,6 +97,10 @@
         padding-right: 0;
         padding-left: 10px;
       }
+
+      .col-xs-12:nth-child(3) {
+        clear: both;
+      }
     }
   } 
 }
@@ -110,6 +114,10 @@
       }
       .col-xs-12:nth-child(even) {
         padding-right: 0;
+      }
+
+      .col-xs-12:nth-child(3) {
+        clear: both;
       }
     }
 
