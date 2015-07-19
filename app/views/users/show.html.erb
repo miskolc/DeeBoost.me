@@ -71,7 +71,7 @@
   <% end %>
 </div>
 <div class="container-fluid chart-container col-md-12 col-lg-12 col-xs-12 col-sm-12">
-  <div id="chart_div" style="height: 100%">
+  <div id="chart_div" data-current-user="<%= current_user.id %>" style="height: 100%">
   </div>
   <div class="ajax-loader text-center">
     <span class="spinner-message">Getting your location ...</span>
