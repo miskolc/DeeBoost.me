@@ -161,7 +161,7 @@ var ChartDrawer = (function () {
 
   var init = function () {
     var options = {packages: ['corechart', 'bar'], callback: drawAxisTickColors},
-        anglesURL = '/users/' + $(chart_div).data('current-user') + '/current_location/current_day';
+        anglesURL = '/users/' + $("#chart_div").data('current-user') + '/current_location/current_day';
     $.getJSON( anglesURL, function(data) {
       anglesJSON = data.angles;
       parseLocationAngles(data);
