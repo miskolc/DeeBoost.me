@@ -9,6 +9,9 @@
   .table-responsive {
     td {
       vertical-align: middle !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal !important;
     }
     .btn {
       float: right;
