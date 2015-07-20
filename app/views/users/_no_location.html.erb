@@ -1,0 +1,18 @@
+<div class="container location-form no-location">
+  <%= form_for( location, url: user_locations_path(current_user) ) do |f| %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :longitude %>
+    <%= f.hidden_field :latitude %>
+    <%= f.hidden_field :current_location, value: true %>
+    <%= hidden_field :date_time, :timezone %>
+    <%= hidden_field :date_time, :year %>
+    <%= hidden_field :date_time, :day %>
+    <%= hidden_field :date_time, :month %>
+    <%= f.submit class: "js-submit" %>
+  <% end %>
+</div>
+<div class="container col-md-12 col-lg-12 col-xs-12" style="height: 240px">
+  <div id="chart_div" style="height: 100%">
+  </div>
+  <%= render partial: 'spinner' %>
+</div>
