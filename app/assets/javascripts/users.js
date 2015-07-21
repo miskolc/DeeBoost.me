@@ -18,7 +18,8 @@ $(document).on('page:change first:location', function () {
         $sunbathingStartKnob = $(".knob-sunbathing-start"),
         $sunbathingEndKnob = $(".knob-sunbathing-end"),
         $currentTimeKnob = $(".knob-current-time"),
-        $nearestTimeKnob = $(".knob-nearest-time");
+        $nearestTimeKnob = $(".knob-nearest-time"),
+        $editLocationForms = $(".edit_location");
 
     if($currentPage.hasClass("users") && $currentPage.hasClass("show")) {
       if($currentPage.find(".no-location").length === 1) {
@@ -53,6 +54,14 @@ $(document).on('page:change first:location', function () {
            //$submit.on('click', lambda );
         });
       }
+    }
+
+    if($currentPage.hasClass("locations") && $currentPage.hasClass("index")) {
+      $editLocationForms.find(".js-submit").on('click', function lambda(e) {
+        e.preventDefault();
+        DateTimeGetter.init($(this).closest(".edit_location"));
+        $(this).unbind('click').click();
+      });
     }
   })();
 });

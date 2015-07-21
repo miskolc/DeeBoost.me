@@ -6,4 +6,9 @@ $("#location_<%= @old_location.id %> td:last-child").html(
   "<%= j render(partial: 'location_form', locals: { location: @old_location }) %>"
 );
 $("#location_<%= @old_location.id %>").removeClass("current_location");
+$("#location_<%= @old_location.id %>").find(".edit_location .js-submit").on('click', function lambda(e) {
+  e.preventDefault();
+  DateTimeGetter.init($(this).closest(".edit_location"));
+  $(this).unbind('click').click();
+});
 
