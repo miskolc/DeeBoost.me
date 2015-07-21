@@ -9,6 +9,10 @@
     <%= f.hidden_field :longitude %>
     <%= f.hidden_field :latitude %>
     <%= f.hidden_field :current_location, value: true %>
+    <%= hidden_field :date_time, :timezone %>
+    <%= hidden_field :date_time, :year %>
+    <%= hidden_field :date_time, :day %>
+    <%= hidden_field :date_time, :month %>
     <%= f.submit "Set as Current Location", class: "btn btn-sand js-submit" %>
   <% end %>
 <% end %>
