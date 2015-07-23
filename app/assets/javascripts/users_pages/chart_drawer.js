@@ -14,6 +14,13 @@ var ChartDrawer = (function () {
     return [date.getHours(), date.getMinutes(), date.getSeconds()];
   }
 
+  var _updateCurrentElevationAngle = function(knobElement) {
+    knobElement.val(currentElevationAngle()).trigger("change");
+    setTimeout(function() {
+      _updateCurrentElevationAngle(knobElement)
+    }, 1000);
+  }
+
   var timeToSeconds = function (hour, minute, second) {
     second = (typeof second === 'undefined') ? 0 : second; //second is optional
     return hour * 3600 + minute * 60 + second;
@@ -59,7 +66,9 @@ var ChartDrawer = (function () {
         sunbathingStartTime, sunbathingEndTime;
     
     $elevationAngleKnob.val(currentElevationAngle);
+
     KnobDrawer.init($elevationAngleKnob);
+    _updateCurrentElevationAngle($elevationAngleKnob);
 
     console.log(sunbathingStart);
     console.log(sunbathingEnd);
