@@ -8,7 +8,7 @@
 
 $(document).on('page:change first:location', function () {
   ( function(){
-    var $currentPage = $(".js-page")
+    var $currentPage = $(".js-page"),
         $form = $("#new_location"),
         $body = $("body"),
         $submit = $form.find(".js-submit"),
