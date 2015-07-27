@@ -17,8 +17,8 @@ $(document).on('page:change first:location', function () {
         $sunbathingTimeKnob = $(".js-knob-sunbathing-time"),
         $sunbathingStartKnob = $(".js-knob-sunbathing-start"),
         $sunbathingEndKnob = $(".js-knob-sunbathing-end"),
-        $currentTimeKnob = $(".knob-current-time"),
-        $nearestTimeKnob = $(".knob-nearest-time"),
+        $currentTimeKnob = $(".js-knob-current-time"),
+        $nearestTimeKnob = $(".js-knob-nearest-time"),
         $editLocationForms = $(".edit_location");
 
     if($currentPage.hasClass("users") && $currentPage.hasClass("show")) {
