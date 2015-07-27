@@ -55,7 +55,7 @@
      <div class="panel-footer" style="color:#337ab7">The current time on your device.</div>
   </div> -->
 </div>
-<div class="container-fluid location-form has-location">
+<div class="container-fluid js-location-form has-location">
   <%= form_for( location, url: user_locations_post_update_path(current_user), remote: true ) do |f| %>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :longitude %>
