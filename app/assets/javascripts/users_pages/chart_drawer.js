@@ -62,8 +62,12 @@ var ChartDrawer = (function () {
   }
 
   var _drawSunBathingTimeKnob = function(sunbathingStartTime, sunbathingEndTime) {
-    totalSunbathingTime = sunbathingEndTime - sunbathingStartTime;
-    remainingSunbathingTime = sunbathingEndTime - _currentTimeSeconds();
+    var totalSunbathingTime = sunbathingEndTime - sunbathingStartTime;
+    var remainingSunbathingTime = sunbathingEndTime - _currentTimeSeconds();
+
+    if(totalSunbathingTime < remainingSunbathingTime) {
+      remainingSunbathingTime = 0;
+    }
 
     $sunbathingTimeKnob.attr("data-max", totalSunbathingTime);
     $sunbathingTimeKnob.val(remainingSunbathingTime).trigger("change");
