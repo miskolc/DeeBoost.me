@@ -8,17 +8,16 @@
 
 $(document).on('page:change first:location', function () {
   ( function(){
-    var $noLocation = $(".no-location")
-        $currentPage = $(".js-page"),
+    var $currentPage = $(".js-page")
         $form = $("#new_location"),
         $body = $("body"),
         $submit = $form.find(".js-submit"),
-        $elevationAngleKnob = $(".knob-elevation-angle"),
-        $sunbathingTimeKnob = $(".knob-sunbathing-time"),
-        $sunbathingStartKnob = $(".knob-sunbathing-start"),
-        $sunbathingEndKnob = $(".knob-sunbathing-end"),
-        $currentTimeKnob = $(".knob-current-time"),
-        $nearestTimeKnob = $(".knob-nearest-time"),
+        $elevationAngleKnob = $(".js-knob-elevation-angle"),
+        $sunbathingTimeKnob = $(".js-knob-sunbathing-time"),
+        $sunbathingStartKnob = $(".js-knob-sunbathing-start"),
+        $sunbathingEndKnob = $(".js-knob-sunbathing-end"),
+        $currentTimeKnob = $(".js-knob-current-time"),
+        $nearestTimeKnob = $(".js-knob-nearest-time"),
         $editLocationForms = $(".edit_location");
 
     if($currentPage.hasClass("users") && $currentPage.hasClass("show")) {

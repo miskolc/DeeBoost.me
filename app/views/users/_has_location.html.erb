@@ -6,7 +6,7 @@
         <i class="glyphicon glyphicon-chevron-up"></i>
       </div>
       <div class="panel-body text-center collapse in">
-        <input class="knob-elevation-angle" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="360" readonly value="75"/>
+        <input class="js-knob-elevation-angle" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-min="-180" data-max="180" data-angleOffset="180" readonly />
       </div>
        <div class="panel-footer" style="color:#337ab7">Vitamin D can be produced when the elevation angle above is <b>50°</b>.</div>
     </div>
@@ -18,7 +18,7 @@
         <i class="glyphicon glyphicon-chevron-up"></i>
       </div>
       <div class="panel-body text-center collapse in">
-        <input class="knob-sunbathing-time" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="360" readonly disabled value="75"/>
+        <input class="js-knob-sunbathing-time" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="360" readonly disabled value="75"/>
       </div>
        <div class="panel-footer" style="color:#337ab7">The amount of time left until the elevation angle will be below <b>50°</b>.</div>
     </div>
@@ -30,7 +30,7 @@
         <i class="glyphicon glyphicon-chevron-up"></i>
       </div>
       <div class="panel-body text-center collapse in">
-        <input class="knob-sunbathing-start" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="86400" readonly disabled value="75"/>
+        <input class="js-knob-sunbathing-start" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="86400" readonly disabled value="75"/>
       </div>
        <div class="panel-footer" style="color:#337ab7">From this moment the elevation angle is above <b>50°</b> and your body can produce Vitamin D. </div>
     </div>
@@ -42,7 +42,7 @@
         <i class="glyphicon glyphicon-chevron-up"></i>
       </div>
       <div class="panel-body text-center collapse in">
-        <input class="knob-sunbathing-end" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="86400" readonly disabled value="75"/>
+        <input class="js-knob-sunbathing-end" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="86400" readonly disabled value="75"/>
       </div>
        <div class="panel-footer" style="color:#337ab7">After this moment the elevation angle is below <b>50°</b> and your body can't produce Vitamin D.</div>
     </div>
@@ -50,12 +50,12 @@
   <!-- <div class="panel panel-primary">
     <div class="panel-heading">Current Time</div>
     <div class="panel-body text-center">
-      <input class="knob-current-time" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="86400" readonly disabled value="75"/>
+      <input class="js-knob-current-time" data-width="200" data-displayPrevious=true data-fgColor="#337ab7" data-skin="tron" data-thickness=".2" data-max="86400" readonly disabled value="75"/>
     </div>
      <div class="panel-footer" style="color:#337ab7">The current time on your device.</div>
   </div> -->
 </div>
-<div class="container-fluid location-form has-location">
+<div class="container-fluid js-location-form has-location">
   <%= form_for( location, url: user_locations_post_update_path(current_user), remote: true ) do |f| %>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :longitude %>

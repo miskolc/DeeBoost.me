@@ -18,10 +18,10 @@ var KnobDrawer = (function () {
   };
 
   var _chooseFormatFunction = function () {
-    if($knobElement.hasClass("knob-sunbathing-time") || 
-       $knobElement.hasClass("knob-current-time") ||
-       $knobElement.hasClass("knob-sunbathing-start") ||
-       $knobElement.hasClass("knob-sunbathing-end") ) {
+    if($knobElement.hasClass("js-knob-sunbathing-time") || 
+       $knobElement.hasClass("js-knob-current-time") ||
+       $knobElement.hasClass("js-knob-sunbathing-start") ||
+       $knobElement.hasClass("js-knob-sunbathing-end") ) {
       return _timeFormat;
     }
     return _degreeFormat;
