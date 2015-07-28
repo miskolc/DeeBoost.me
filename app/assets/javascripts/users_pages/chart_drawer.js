@@ -2,7 +2,19 @@ var ChartDrawer = (function () {
   var anglesJSON,
       parsedAngles,
       sunbathingStart,
-      sunbathingEnd; 
+      sunbathingEnd,
+      $elevationAngleKnob,
+      $sunbathingTimeKnob,
+      $sunbathingStartKnob,
+      $sunbathingEndKnob;
+
+
+  var _getKnobs = function() {
+    $elevationAngleKnob = $(".js-knob-elevation-angle");
+    $sunbathingTimeKnob = $(".js-knob-sunbathing-time");
+    $sunbathingStartKnob = $(".js-knob-sunbathing-start");
+    $sunbathingEndKnob = $(".js-knob-sunbathing-end");
+  }
 
   var _currentTimeSeconds = function( ) {
     var date = new Date();
@@ -185,7 +197,10 @@ var ChartDrawer = (function () {
 
   var init = function () {
     var options = {packages: ['corechart', 'bar'], callback: drawAxisTickColors},
-        anglesURL = '/users/' + $("#chart_div").data('current-user') + '/current_location/current_day';
+        anglesURL = '/users/' + 
+                    $("#chart_div").data('current-user') +
+                    '/current_location/current_day';
+    _getKnobs();
     $.getJSON( anglesURL, function(data) {
       anglesJSON = data.angles;
       parseLocationAngles(data);
