@@ -25,3 +25,4 @@
 # Ingore C binaries
 /app/workers/*.so
 /app/workers/*.o
+
