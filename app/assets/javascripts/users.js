@@ -3,7 +3,7 @@
 //= require turbolinks
 // Require vendor javascripts
 //= require index.js
-//= require_tree ./application/addons
+//= require_tree ./application
 //= require_tree ./users_pages
 
 $(document).on('page:change first:location', function () {
