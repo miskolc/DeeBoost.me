@@ -78,7 +78,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Devise
-  config.action_mailer.default_url_options = { host: 'deeboost', port: 80 }
+  config.action_mailer.default_url_options = { host: 'deeboost.me', port: 80 }
 
   # ActionMailer Config
   config.action_mailer.delivery_method = :smtp
