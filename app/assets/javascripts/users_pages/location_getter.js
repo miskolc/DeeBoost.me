@@ -1,6 +1,7 @@
 var LocationGetter = (function() {
   var locationJSON,
-      $form;
+      $form,
+      $body;
  
   var _saveLocation = function(position) {
     var locationString = '{"latitude": "' + position.coords.latitude + 
@@ -57,6 +58,7 @@ var LocationGetter = (function() {
 
   var init = function (form) {
     $form = form;
+    $body = $("body");
     console.log("here");
     _getLocation(_saveLocation);
   }
