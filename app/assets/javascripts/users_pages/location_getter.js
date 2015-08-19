@@ -51,7 +51,7 @@ var LocationGetter = (function() {
         navigator.geolocation.getCurrentPosition(callback, function(obj) {
           console.log("Failure");
           console.log(obj);
-        }, {timeout: 300});
+        }, {timeout: 3000});
       }
     }
   }
