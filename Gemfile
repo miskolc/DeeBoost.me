@@ -32,6 +32,9 @@ gem 'devise', '~> 3.4.1'
 # Sidekiq
 gem 'sidekiq', '~> 3.3.4'
 
+# Whenever Cron Jobs
+gem 'whenever', '~> 0.9.4', require: false
+
 # FFI
 gem 'ffi', '~> 1.9.8'
 
