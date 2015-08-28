@@ -8,6 +8,8 @@ class LocationsController < ApplicationController
 
   def create
     @new_location = current_user.locations.build location_params
+    @new_location.summer_timezone = day_params[:timezone]
+    @new_location.winter_timezone = @new_location.summer_timezone - 1
     @new_location.save
     unless current_user.current_location.id == @new_location.id
       current_user.current_location.set_current_location @new_location    
@@ -37,6 +39,8 @@ class LocationsController < ApplicationController
 
   def post_update
     @location = current_user.locations.build location_params
+    @location.summer_timezone = day_params[:timezone]
+    @location.winter_timezone = @location.summer_timezone - 1
     @location.save
     unless current_user.current_location.id == @location.id
       current_user.current_location.set_current_location @location    
