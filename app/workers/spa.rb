@@ -70,7 +70,7 @@ module SpaLibrary
            :sunset        , :double
   end
 
-  attach_function :spa_calculate, [:pointer], :int
+  attach_function :spa_calculate, [ SpaObject.by_ref ], :int
 
   def self.init spa
     spa[:minute] = 0
