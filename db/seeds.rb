@@ -9,6 +9,12 @@
                 password: 'random2kx',
                 password_confirmation: 'random2kx'
 
+    bucharest = dragos.locations.create latitude: 44.43225,
+                longitude: 26.10626,
+                current_location: false,
+                summer_timezone: 3.0,
+                winter_timezone: 2.0
+
     new_york = dragos.locations.create latitude: 40.712783,
                 longitude: -74.005941,
                 current_location: false,
@@ -18,5 +24,5 @@
     london = dragos.locations.create latitude: 51.50853,
                 longitude: -0.12574,
                 current_location: false,
-                summer_timezone: 0.0,
-                winter_timezone: 1.0
+                summer_timezone: 1.0,
+                winter_timezone: 0.0
