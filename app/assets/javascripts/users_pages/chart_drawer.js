@@ -1,8 +1,8 @@
 var ChartDrawer = (function () {
   var anglesJSON,
       parsedAngles,
-      sunbathingStart = {hour: 0, minute: 0, second: 0},
-      sunbathingEnd = {hour: 0, minute: 0, second:0 },
+      sunbathingStart,
+      sunbathingEnd,
       $elevationAngleKnob,
       $sunbathingTimeKnob,
       $sunbathingStartKnob,
@@ -47,6 +47,8 @@ var ChartDrawer = (function () {
 
   var parseLocationAngles = function(locationAngles) {
     var angles = [], foundAngleAbove = false;
+    sunbathingStart = {hour: 0, minute: 0, second: 0},
+    sunbathingEnd = {hour: 0, minute: 0, second:0 },
     angles = locationAngles.angles.map(function(angle) {
       var parsed = []; coord = {}; 
       coord["v"]= [angle["hour"],angle["minute"],0]; 
