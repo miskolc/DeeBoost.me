@@ -44,6 +44,9 @@ gem 'will_paginate', '~> 3.0.6'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Reverse geocoding
+gem 'geocoder', '~>1.2.11'
+
 # Use Unicorn as the app server
 gem 'unicorn'
 

@@ -66,6 +66,7 @@ GEM
     erubis (2.7.0)
     execjs (2.4.0)
     ffi (1.9.8)
+    geocoder (1.2.11)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -189,6 +190,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise (~> 3.4.1)
   ffi (~> 1.9.8)
+  geocoder (~> 1.2.11)
   jbuilder (~> 2.0)
   jquery-rails
   pg (~> 0.18.1)
