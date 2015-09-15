@@ -1,8 +1,8 @@
 var ChartDrawer = (function () {
   var anglesJSON,
       parsedAngles,
-      sunbathingStart,
-      sunbathingEnd,
+      sunbathingStart = {hour: 0, minute: 0, second: 0},
+      sunbathingEnd = {hour: 0, minute: 0, second:0 },
       $elevationAngleKnob,
       $sunbathingTimeKnob,
       $sunbathingStartKnob,
