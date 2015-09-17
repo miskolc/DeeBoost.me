@@ -50,6 +50,11 @@ gem 'geocoder', '~>1.2.11'
 # Use Unicorn as the app server
 gem 'unicorn'
 
+# Timezone gems
+gem 'google_timezone', '~>0.0.4'
+gem 'tzinfo', '~>1.2.2'
+gem 'tzinfo-data', '~>1.2015.6'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
