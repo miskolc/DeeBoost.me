@@ -17,6 +17,12 @@ class Location < ActiveRecord::Base
     new_current_location
   end
 
+  def offset
+    # Includes both offset from utc and daylight savings time offset
+    iana_timezone = self.timezone
+    ActiveSupport::TimeZone[iana_timezone].tzinfo.current_period.utc_total_offset / 3600.0
+  end
+
   def self.update_days
     new_day = self.new_day
     # For all the current locations of all users
