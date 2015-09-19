@@ -23,15 +23,26 @@ class Location < ActiveRecord::Base
     ActiveSupport::TimeZone[iana_timezone].tzinfo.current_period.utc_total_offset / 3600.0
   end
 
+  # def self.update_days
+  #   new_day = self.new_day
+  #   # For all the current locations of all users
+  #   # compute the solar angles for that day at 00:00 AM
+  #   self.where( current_location: true,
+  #               self.season => new_day[:timezone]
+  #             ).find_each do |location|
+  #               day = location.days.create new_day
+  #               SpaWorker.perform_async day.id
+  #             end
+  # end
+
   def self.update_days
     new_day = self.new_day
-    # For all the current locations of all users
-    # compute the solar angles for that day at 00:00 AM
-    self.where( current_location: true,
-                self.season => new_day[:timezone]
+    self.where( current_location: true
               ).find_each do |location|
-                day = location.days.create new_day
-                SpaWorker.perform_async day.id
+                if location.offset == new_day[:timezone]
+                  day = location.days.create new_day
+                  SpaWorker.perform_async day.id
+                end
               end
   end
 
