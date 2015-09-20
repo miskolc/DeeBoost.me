@@ -39,7 +39,7 @@ class Location < ActiveRecord::Base
     new_day = self.new_day
     self.where( current_location: true
               ).find_each do |location|
-                if location.offset == new_day[:timezone]
+                if location.offset == new_day[:offset]
                   day = location.days.create new_day
                   SpaWorker.perform_async day.id
                 end
@@ -55,15 +55,15 @@ class Location < ActiveRecord::Base
 
     if fractional_utc_time <= 12
       # for regions West of London
-      timezone = -1 * fractional_utc_time
+      offset = -1 * fractional_utc_time
       new_day_time = current_time
     else
       # for regions Est of London
-      timezone = 24 - fractional_utc_time
+      offset = 24 - fractional_utc_time
       new_day_time = current_time.next_day
     end
     {
-      timezone: timezone,
+      offset: offset,
       day: new_day_time.day,
       month: new_day_time.month,
       year: new_day_time.year

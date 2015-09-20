@@ -9,7 +9,7 @@ var DateTimeGetter = (function(){
       $form.find("#date_time_day").val(date.getDate());
       $form.find("#date_time_month").val(date.getMonth() + 1);
       offsetInHours = date.getTimezoneOffset() * -1 / 60;
-      $form.find("#date_time_timezone").val(offsetInHours);
+      $form.find("#date_time_offset").val(offsetInHours);
     }       
 
     var init = function (form) {

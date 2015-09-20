@@ -10,7 +10,7 @@ class SpaWorker
     angles = SpaLibrary.calculate date.year,
                                   date.month,
                                   date.day,
-                                  date.timezone,
+                                  date.offset,
                                   date.location.latitude,
                                   date.location.longitude,
                                   altitude
