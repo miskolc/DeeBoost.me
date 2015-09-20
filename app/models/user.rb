@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   end
 
   def locations_for page
-    locations.paginate(page: page, :per_page => 5).order("current_location DESC, id DESC")
+    locations.paginate(page: page, :per_page => 5).order("current_location DESC, updated_at DESC")
   end
 
 end
