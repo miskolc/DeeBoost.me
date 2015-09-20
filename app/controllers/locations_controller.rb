@@ -8,9 +8,8 @@ class LocationsController < ApplicationController
 
   def create
     @new_location = current_user.locations.build location_params
-    @new_location.summer_timezone = day_params[:timezone]
-    @new_location.winter_timezone = @new_location.summer_timezone - 1
     @new_location.save
+    TimezoneWorker.perform_async @new_location.id
     unless current_user.current_location.id == @new_location.id
       current_user.current_location.set_current_location @new_location    
     end
@@ -29,7 +28,11 @@ class LocationsController < ApplicationController
     @new_location = current_user.locations.find_by id: params[:id]
     @old_location = current_user.current_location
     current_user.current_location.set_current_location @new_location
-    @day = @new_location.days.create day_params
+
+    @day = @new_location.days.build day_params
+    @day.offset = @new_location.offset
+    @day.save
+
     SpaWorker.perform_async(@day.id)
     @old_location.current_location = false
     respond_to do |format|
@@ -39,9 +42,8 @@ class LocationsController < ApplicationController
 
   def post_update
     @location = current_user.locations.build location_params
-    @location.summer_timezone = day_params[:timezone]
-    @location.winter_timezone = @location.summer_timezone - 1
     @location.save
+    TimezoneWorker.perform_async @location.id
     unless current_user.current_location.id == @location.id
       current_user.current_location.set_current_location @location    
     end
@@ -74,6 +76,6 @@ class LocationsController < ApplicationController
     end
 
     def day_params
-      params.require(:date_time).permit(:year, :day, :month, :timezone)
+      params.require(:date_time).permit(:year, :day, :month, :offset)
     end
 end

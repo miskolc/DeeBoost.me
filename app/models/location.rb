@@ -17,15 +17,20 @@ class Location < ActiveRecord::Base
     new_current_location
   end
 
+  def offset
+    # Includes both offset from utc and daylight savings time offset
+    iana_timezone = self.timezone
+    ActiveSupport::TimeZone[iana_timezone].tzinfo.current_period.utc_total_offset / 3600.0
+  end
+
   def self.update_days
     new_day = self.new_day
-    # For all the current locations of all users
-    # compute the solar angles for that day at 00:00 AM
-    self.where( current_location: true,
-                self.season => new_day[:timezone]
+    self.where( current_location: true
               ).find_each do |location|
-                day = location.days.create new_day
-                SpaWorker.perform_async day.id
+                if location.offset == new_day[:offset]
+                  day = location.days.create new_day
+                  SpaWorker.perform_async day.id
+                end
               end
   end
 
@@ -38,29 +43,19 @@ class Location < ActiveRecord::Base
 
     if fractional_utc_time <= 12
       # for regions West of London
-      timezone = -1 * fractional_utc_time
+      offset = -1 * fractional_utc_time
       new_day_time = current_time
     else
       # for regions Est of London
-      timezone = 24 - fractional_utc_time
+      offset = 24 - fractional_utc_time
       new_day_time = current_time.next_day
     end
     {
-      timezone: timezone,
+      offset: offset,
       day: new_day_time.day,
       month: new_day_time.month,
       year: new_day_time.year
     }
-  end
-
-  def self.season
-    :summer_timezone
-    # I try to find the country using the latitude and longitude.
-    # Using the country and the summer offset I find limits of the
-    #          Daylight Saving Time for that region
-    # Then I come back here and I set the season to :summer_timezone
-    #          or :winter_timezone based on current date falling
-    #          within these time limits
   end
 
   private
