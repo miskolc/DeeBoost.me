@@ -28,7 +28,11 @@ class LocationsController < ApplicationController
     @new_location = current_user.locations.find_by id: params[:id]
     @old_location = current_user.current_location
     current_user.current_location.set_current_location @new_location
-    @day = @new_location.days.create day_params
+
+    @day = @new_location.days.build day_params
+    @day.offset = @new_location.offset
+    @day.save
+
     SpaWorker.perform_async(@day.id)
     @old_location.current_location = false
     respond_to do |format|
