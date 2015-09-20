@@ -1,8 +1,7 @@
 var DateTimeGetter = (function(){
  
     var _setDateTime = function() {   
-      var date, timezoneString, offsetInHours, 
-          sign, timezoneNumber;
+      var date, offsetInHours;
 
       date = new Date();
       $form.find("#date_time_year").val(date.getFullYear());
