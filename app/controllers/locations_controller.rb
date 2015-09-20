@@ -9,7 +9,7 @@ class LocationsController < ApplicationController
   def create
     @new_location = current_user.locations.build location_params
     @new_location.save
-    TimezoneWorker.perform_async @location.id
+    TimezoneWorker.perform_async @new_location.id
     unless current_user.current_location.id == @new_location.id
       current_user.current_location.set_current_location @new_location    
     end
