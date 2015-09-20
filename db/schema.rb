@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919034704) do
+ActiveRecord::Schema.define(version: 20150920115254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150919034704) do
     t.integer  "year"
     t.integer  "day"
     t.integer  "month"
-    t.float    "timezone"
+    t.float    "offset"
     t.json     "angles"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
