@@ -145,7 +145,6 @@ GEM
       json
       redis (>= 3.0.6)
       redis-namespace (>= 1.3.1)
-    spring (1.4.0)
     sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -202,7 +201,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   sidekiq (~> 3.3.4)
-  spring (~> 1.4.0)
   sqlite3
   turbolinks
   tzinfo (~> 1.2.2)
