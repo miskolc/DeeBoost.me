@@ -23,6 +23,12 @@ class Location < ActiveRecord::Base
     ActiveSupport::TimeZone[iana_timezone].tzinfo.current_period.utc_total_offset / 3600.0
   end
 
+  def self.update_day_for_user user
+    location = user.current_location
+    day = location.days.create new_day
+    SpaWorker.perform_async day.id
+  end
+
   def self.update_days
     new_day = self.new_day
     self.where( current_location: true
