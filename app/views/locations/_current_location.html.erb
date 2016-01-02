@@ -1,0 +1,23 @@
+<div>
+<div class="current-location-details">
+  <table class="table table-striped current-location-table">
+     <thead>
+       <tr>
+         <th>Current Address</th>
+         <th>Addition Date</th>
+         <th>Latitude</th>
+         <th>Longitude</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td><%= current_location.address %></td>
+         <td><%= addition_date_for current_location %></td>
+         <td><%= current_location.latitude %></td>
+         <td><%= current_location.longitude %></td>
+       </tr>
+     </tbody>
+  </table>
+</div>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=760x400&sensor=false&zoom=13&markers=#{current_location.latitude}%2C#{current_location.longitude}", class: "current-location-map" %>
+</div>

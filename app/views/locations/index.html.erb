@@ -1,4 +1,8 @@
 <div class="pagini">
+  <div id="js_current_location">
+    <%= render partial: 'current_location', locals: {current_location: current_user.current_location} %>
+  </div>
+  <div class="clearfix"></div>
   <div class="digg_pagination">
     <%= will_paginate @locations %>
   </div>  

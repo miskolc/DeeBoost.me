@@ -2,6 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .users_pages {
+  .current-location-details {
+    height: 100%;
+    width: 48%;
+    max-width: 760px;
+    float: left;
+  }
+
+  .current-location-map {
+    overflow: hidden !important;
+    height: 100%;
+    max-height: 400px;
+    width: 48%;
+    max-width: 760px;
+    float: right;
+  }
+
   .current_location .delete_location {
       visibility: hidden;
   }
@@ -81,6 +97,10 @@
 @media
 only screen and (max-width: 760px)  {
 
+  .current-location-details, .current-location-map {
+    width: 100% !important;
+  }
+
   /* Force table to not be like tables anymore */
   table, thead, tbody, th, td, tr {
     display: block;
@@ -128,3 +148,54 @@ only screen and (max-width: 760px)  {
   td:nth-of-type(4):before { content: ""; }
   td:nth-of-type(5):before { content: ""; }
 }
+
+  table.current-location-table {
+    display: block;
+
+      thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      /* Hide table headers (but not display: none;, for accessibility) */
+      thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+
+      tr { border: 0 !important; }
+
+      td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        overflow: auto;
+        .btn {
+          width: 100%;
+        }
+        &:first-of-type {
+          border-top: 0 !important;
+        };
+      }
+
+      td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+      }
+
+
+    td:nth-of-type(-n+4) { padding-left: 50% !important; }
+    td:nth-of-type(1):before { content: "Current Address"; }
+    td:nth-of-type(2):before { content: "Addition Date"; }
+    td:nth-of-type(3):before { content: "Latitude"; }
+    td:nth-of-type(4):before { content: "Longitude  "; }
+    td:nth-of-type(5):before { content: ""; }
+  }
