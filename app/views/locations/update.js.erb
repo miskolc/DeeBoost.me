@@ -1,3 +1,6 @@
+$("#js_current_location").html(
+  "<%= j render(partial: 'current_location', locals: {current_location: @new_location}) %>"
+);
 $("#location_<%= @new_location.id %> td:last-child").html(
   "<%= j render(partial: 'location_form', locals: { location: @new_location }) %>"
 );
