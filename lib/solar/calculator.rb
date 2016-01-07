@@ -193,7 +193,7 @@ module Solar
         if(e0 > -1 * (SUN_RADIUS + @atmos_refract))
           delta_e = (@pressure / 1010.0) *
                     (283.0 / (273.0 + @temperature)) *
-                    1.02 / (60.0 * Math.tan((e0 + 10.3 / (e0 + 5.11)).to_deg)) 
+                    1.02 / (60.0 * Math.tan((e0 + 10.3 / (e0 + 5.11)).to_rad))
         end
 
         delta_e
