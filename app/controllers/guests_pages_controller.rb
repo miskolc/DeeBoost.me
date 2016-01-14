@@ -4,4 +4,7 @@ class GuestsPagesController < ApplicationController
       redirect_to current_user
     end
   end  
+
+  def contact
+  end
 end

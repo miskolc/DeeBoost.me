@@ -3,10 +3,32 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .guests_pages {
-  .bg-color {
-    overflow: auto;
-    .container.content {
-      margin: 100px auto 10% auto;
+  .bg {
+    min-height: 585px;
+    .bg-color {
+      overflow: visible;
+      padding-top: 100px;
+      .container.content {
+        margin: 0px auto 10% auto;
+        #right-block {
+          h3 {
+            margin: 3em;
+          }
+        }
+      }
+    }
+  }
+  footer {
+    padding: 50px 0;
+    background-color: #1B1F22;
+    background: linear-gradient(to bottom, white, 0.5px, #1B1F22);
+    text-align: center;
+    a {
+      color: #ffffff;
+      &:hover {
+        color: #CEEDF0;
+        text-decoration: underline;
+      }
     }
   }
 }

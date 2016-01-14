@@ -6,16 +6,8 @@
 <body class="guests_pages">
 
 <%= render partial: 'layouts/partials/navigation' %>
-
-<div class="bg">
-  <div class="bg-color">
-    <div class="container content">
-      <%= render partial: 'layouts/partials/flash' %>
-      <%= yield %>
-    </div>
-    <div class="clearfix"></div>
-  </div>  
-</div>  
+<%= yield %>
+ 
 
 <%= render partial: '/layouts/partials/landing_js_footer' %>
 

@@ -23,7 +23,7 @@
          -o-transform: translateY(0%);
             transform: translateY(-50%);
   }
-  .sun {
+/*  .sun {
     position: relative;
     top: 50%;
     -webkit-transform: translateY(-48%);
@@ -31,7 +31,7 @@
         -ms-transform: translateY(0%);
          -o-transform: translateY(0%);
             transform: translateY(-50%);
-  }
+  }*/
   
   .sun img {
 	  position:relative;
@@ -62,11 +62,11 @@
         top: 10%;
         transform: translateY(0%);
      }
-	.sun {
+/*	.sun {
 		position:relative;
 	  top:50%;
 	  transform: translateY(-50%);
-	 } 
+	 } */
 }
 
 @media screen and (max-width: 768px) {

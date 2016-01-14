@@ -1,0 +1,29 @@
+<div class="bg">
+  <div class="bg-color">
+    <div class="container content">
+      <%= render partial: 'layouts/partials/flash' %>
+      <div class="authorization-form col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+        <h3>We would love to hear from you!</h3>
+        <%= form_tag(contact_send_path, method: "post") do %>
+          <fieldset>
+            <div class="field form-group">
+              <%= label_tag :email, "Your Email", class: "control-label" %><br />
+              <div class="">
+                <%= email_field_tag :email, nil, autofocus: true, class: "form-control" %>
+              </div>
+            </div>
+            <div class="field form-group">
+              <%= label_tag :message, "Your Message", class: "control-label" %><br />
+              <div class="">
+                <%= text_area_tag :message, nil, autofocus: true, class: "form-control" %>
+              </div>
+            </div>
+            <div class="actions">
+              <%= submit_tag "Send Message", class: "btn btn-sand" %>
+            </div>
+          </fieldset>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

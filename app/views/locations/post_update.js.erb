@@ -1,3 +1,5 @@
 setTimeout( function() {
+  var $locationForm = $(".js-location-form");
+  $locationForm.find("b").html("<%= "#{current_user.current_location.city}, #{current_user.current_location.country}" %>");
   ChartDrawer.init();
 }, 1000);

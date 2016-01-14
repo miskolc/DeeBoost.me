@@ -1,5 +1,7 @@
-  <p><%= @current_location.longitude %></p>
-  <p><%= @current_location.latitude %></p>
+  <span class="btn btn-success">
+    <i class="glyphicon glyphicon-map-marker"></i>
+    <b><%= "#{current_user.current_location.city}, #{current_user.current_location.country}" %></b>
+  </span>
   <%= form_for( @location, url: user_locations_post_update_path(current_user), remote: true ) do |f| %>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :longitude %>

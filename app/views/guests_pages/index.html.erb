@@ -1,46 +1,94 @@
-<div class="row">
-  <div class="sun clearfix">
-    <div class="col-sm-12">
-       <h1>DeeBooster</h1>
-       <h3>we are almost ready to launch our</h3>
-       <h2>vitamin D boosting app</h2>        
-    </div>
-    <div id="left-block" class="col-sm-4 text-center">
-      <img class="img-responsive" src="<%= asset_path 'tab.png' %>" alt="tab"/>
-    </div>
-    <div id="right-block" class="col-sm-8">
-      <div class="row">
-         <div class="col-sm-offset-1 col-sm-10">
-          <div class="timing">
-            <div id="count-down" data-date="2016-01-15 00:00:00">
-              
-            </div>
-          </div>
-          <!-- /.timing -->
-         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-offset-2 col-sm-8">
-        <p class="alert-success"></p>
-        <p class="alert-warning"></p>
-        <form class="newsletter-signup" role="form">
-          <div class="input-group">
-          <input type="email" class="form-control" id="email" placeholder="contact@yourdomain.com" required>
-          <span class="input-group-btn">
-            <input type="submit" class="btn btn-default btn-sand" value="subscribe">
-          </span>
-          </div><!-- /input-group -->
-        </form>
+<div class="bg">
+  <div class="bg-color">
+    <div class="container content">
+    <%= render partial: 'layouts/partials/flash' %>
+    <div class="row">
+      <div class="sun clearfix">
+        <div class="col-sm-12">
+           <h1>DeeBooster</h1>
+           <h3>The world's most advanced sunbathing tool</h3>        
         </div>
-      </div>                    
-      <p class="followus"></p>
-      <ul class="social-icon">
-        <li><a href=""><i class="fa fa-camera-retro"></i></a></li>
-        <li><a href=""><i class="fa fa-facebook"></i></a></li>
-        <li><a href=""><i class="fa fa-twitter"></i></a></li>
-        <li><a href=""><i class="fa fa-youtube-square"></i></a></li>
-      </ul>              
+        <div id="left-block" class="col-sm-6 text-center">
+        <img class="img-responsive" src="<%= asset_path 'tab.png' %>" alt="tab"/>
+        </div>
+        <div id="right-block" class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-offset-2 col-sm-8">
+              <p class="alert-success"></p>
+              <p class="alert-warning"></p>
+              <h3>Join now and start producing vitamin D with your own body</h3>
+              <form class="newsletter-signup" role="form">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <input type="submit" class="btn btn-default btn-sand" value="Sign Up">
+                  </span>
+                  <span class="input-group-btn">
+                    <input type="submit" class="btn btn-default btn-sand" value="Sign In">
+                  </span>
+                </div><!-- /input-group -->
+              </form>
+            </div>
+          </div>                    
+          <p class="followus"></p>
+          <ul class="social-icon">
+            <li><a href=""><i class="fa fa-camera-retro"></i></a></li>
+            <li><a href=""><i class="fa fa-facebook"></i></a></li>
+            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+            <li><a href=""><i class="fa fa-youtube-square"></i></a></li>
+          </ul>              
+        </div>
+      </div>
     </div>
+    <div class="clearfix"></div>
+  </div>  
+</div>
+<div class="clearfix"></div>
+<div class="content-section-b">
+  <div class="container">
+  <div class="row">
+      <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+          <hr class="section-heading-spacer">
+          <div class="clearfix"></div>
+          <h2 class="section-heading">Simple and Seamless<br>No complex forms</h2>
+          <p class="lead">You don't need complex devices that are hard to use.</p>
+          <p class="lead">You don't need to manually fill forms fields.</p>
+          <p class="lead">DeeBoost detects seamlessly your current time <i class="fa fa-calendar"></i> and geographic location <i class="fa fa-map-marker"></i>in order to find the best time intervals for Vitamin D production.</p>
+      </div>
+      <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+        <img class="img-responsive" src="<%= asset_path 'dog.png' %>" alt=""/>
+      </div>
+  </div>
+  </div>
+</div>
+<div class="content-section-a">
+  <div class="container">
+  <div class="row">
+      <div class="col-lg-5 col-sm-6">
+          <hr class="section-heading-spacer">
+          <div class="clearfix"></div>
+          <h2 class="section-heading">Deeboost is available<br>on any device</h2>
+          <p class="lead">DeeBoost's web interface is responsive. That means it is optimized for all screen sizes <i class="fa fa-desktop"></i> including smartphones <i class="fa fa-mobile"></i> and tablets <i class="fa fa-tablet"></i> .</p>
+      </div>
+      <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+        <img class="img-responsive" src="<%= asset_path 'phones.png' %>" alt=""/>
+      </div>
+  </div>
+  </div>
+</div>
+<div class="content-section-b">
+  <div class="container">
+  <div class="row">
+      <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+          <hr class="section-heading-spacer">
+          <div class="clearfix"></div>
+          <h2 class="section-heading">Manage multiple locations<br></h2>
+          <p class="lead">If you travel you can save different locations in DeeBoost.</p>
+          <p class="lead">You can switch between saved locations with one simple click  <i class="fa fa-hand-pointer-o"></i> to view the data for a specific location.</p>
+      </div>
+      <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+        <img class="img-responsive" src="<%= asset_path 'ipad.png' %>" alt=""/>
+      </div>
+  </div>
   </div>
 </div>
 

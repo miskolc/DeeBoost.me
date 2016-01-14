@@ -1,7 +1,13 @@
 class Location < ActiveRecord::Base
   belongs_to :user 
   has_many :days
-  reverse_geocoded_by :latitude, :longitude
+  reverse_geocoded_by :latitude, :longitude do |obj,results|
+    if geo = results.first
+      obj.address = geo.address
+      obj.city    = geo.city
+      obj.country = geo.country_code
+    end
+  end
   after_validation :reverse_geocode, if: ->(obj){ obj.latitude.present? and obj.longitude.present? }
   after_commit :transaction_success
   after_rollback :transaction_failed

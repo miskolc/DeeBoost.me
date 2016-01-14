@@ -1,36 +1,43 @@
-<div class="authorization-form col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
-<h2>Log in</h2>
+<div class="bg">
+  <div class="bg-color">
+    <div class="container content">
+      <%= render partial: 'layouts/partials/flash' %>
+      <div class="authorization-form col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+        <h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-horizontal"}) do |f| %>
-  
-  <fieldset>
-  <div class="field form-group">
-    <%= f.label :email, class: "control-label" %>
-    <div>
-      <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-horizontal"}) do |f| %>
+          
+          <fieldset>
+          <div class="field form-group">
+            <%= f.label :email, class: "control-label" %>
+            <div>
+              <%= f.email_field :email, autofocus: true, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="field form-group">
+            <%= f.label :password, class: "control-label" %><br />
+            <div>
+              <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+            </div>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class="field form-group">
+              <%= f.check_box :remember_me, checked: true %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+
+          <div class="actions">
+            <%= f.submit "Log in", class: "btn btn-sand" %>
+          </div>
+          </fieldset>
+        <% end %>
+        <div class="links">  
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
     </div>
   </div>
-
-  <div class="field form-group">
-    <%= f.label :password, class: "control-label" %><br />
-    <div>
-      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-    </div>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field form-group">
-      <%= f.check_box :remember_me, checked: true %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in", class: "btn btn-sand" %>
-  </div>
-  </fieldset>
-<% end %>
-<div class="links">  
-  <%= render "devise/shared/links" %>
-</div>
 </div>
