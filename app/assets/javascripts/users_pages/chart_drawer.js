@@ -140,8 +140,8 @@ var ChartDrawer = (function () {
     var data = new google.visualization.DataTable();
     
     data.addColumn('timeofday', 'Time of Day');
-    data.addColumn('number', 'Bellow 50\xB0 (no vitamin D)' );
-    data.addColumn('number', 'Above 50\xB0 (vitamin D)' );
+    data.addColumn('number', 'Bellow 50\xB0 (bad for vitamin D)' );
+    data.addColumn('number', 'Above 50\xB0 (good for vitamin D)' );
 
     data.addRows(parsedAngles);
 
